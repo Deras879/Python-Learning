@@ -30,6 +30,9 @@ const Lesson: React.FC = () => {
   const [isExerciseCompleted, setIsExerciseCompleted] = useState(false);
   const [isRunning, setIsRunning] = useState(false);
   const [lastSectionKey, setLastSectionKey] = useState("");
+  const [pythonStatus, setPythonStatus] = useState<
+    "loading" | "ready" | "error"
+  >("loading");
 
   // Crear una sola instancia del ejecutor de Python
   const pythonExecutor = useMemo(() => new PythonExecutor(), []);
@@ -37,6 +40,21 @@ const Lesson: React.FC = () => {
   // Use lessons from JSON instead of local data
   const currentLesson = LESSONS_DATA[lessonId || ""];
   const isCompleted = isLessonCompleted(lessonId || "");
+
+  // Verificar el estado de Pyodide
+  useEffect(() => {
+    const checkPyodideStatus = async () => {
+      try {
+        await pythonExecutor.ensureReady();
+        setPythonStatus("ready");
+      } catch (error) {
+        console.error("Error al inicializar Pyodide:", error);
+        setPythonStatus("error");
+      }
+    };
+
+    checkPyodideStatus();
+  }, [pythonExecutor]);
 
   useEffect(() => {
     if (!currentLesson) {
@@ -78,7 +96,7 @@ const Lesson: React.FC = () => {
     navigate("/learning-path");
   };
 
-  const runCode = () => {
+  const runCode = async () => {
     if (!exerciseCode.trim()) {
       setExerciseError("No hay código para ejecutar");
       setExerciseResult("");
@@ -89,35 +107,40 @@ const Lesson: React.FC = () => {
     setExerciseError("");
     setExerciseResult("");
 
-    // Usar setTimeout para simular procesamiento asíncrono
-    setTimeout(() => {
-      try {
-        const result = pythonExecutor.execute(exerciseCode);
-
-        if (result.error) {
-          setExerciseError(result.error);
-          setExerciseResult(result.output || "");
-        } else {
-          setExerciseResult(result.output || "Código ejecutado exitosamente");
-
-          // Validar ejercicio solo si no hay errores
-          const currentExercise = currentLesson.sections[currentSection];
-          if (
-            currentExercise.validation &&
-            currentExercise.validation(exerciseCode)
-          ) {
-            setIsExerciseCompleted(true);
-          }
-        }
-      } catch (error) {
-        const errorMessage =
-          error instanceof Error ? error.message : "Error desconocido";
-        setExerciseError(`Error inesperado: ${errorMessage}`);
-        setExerciseResult("");
-      } finally {
-        setIsRunning(false);
+    try {
+      // Verificar si Pyodide está listo
+      if (!pythonExecutor.isReady()) {
+        setExerciseResult(
+          "Inicializando Python... Por favor espera unos segundos."
+        );
+        await pythonExecutor.ensureReady();
       }
-    }, 100); // Pequeño delay para mostrar el estado de "ejecutando"
+
+      const result = await pythonExecutor.execute(exerciseCode);
+
+      if (result.error) {
+        setExerciseError(result.error);
+        setExerciseResult(result.output || "");
+      } else {
+        setExerciseResult(result.output || "Código ejecutado exitosamente");
+
+        // Validar ejercicio solo si no hay errores
+        const currentExercise = currentLesson.sections[currentSection];
+        if (
+          currentExercise.validation &&
+          currentExercise.validation(exerciseCode)
+        ) {
+          setIsExerciseCompleted(true);
+        }
+      }
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : "Error desconocido";
+      setExerciseError(`Error inesperado: ${errorMessage}`);
+      setExerciseResult("");
+    } finally {
+      setIsRunning(false);
+    }
   };
 
   const copyCode = (code: string) => {
@@ -189,14 +212,52 @@ const Lesson: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Content */}
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Left Column - Theory/Instructions */}
+        {/* Python Status Notification */}
+        {pythonStatus === "loading" && (
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="mb-6"
+          >
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <div className="flex items-center space-x-3">
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
+                <span className="text-blue-800 font-medium">
+                  Inicializando el entorno de Python... Esto puede tomar unos
+                  segundos.
+                </span>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        {pythonStatus === "error" && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-6"
+          >
+            <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+              <div className="flex items-center space-x-3">
+                <AlertCircle className="w-4 h-4 text-red-600" />
+                <span className="text-red-800 font-medium">
+                  Error al cargar Python. Recarga la página para intentar
+                  nuevamente.
+                </span>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        {/* Content */}
+        <div className="space-y-8">
+          {/* Theory/Instructions Section - Full Width */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="space-y-6"
+            className="w-full"
           >
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
               <div className="flex items-center space-x-3 mb-6">
@@ -231,16 +292,16 @@ const Lesson: React.FC = () => {
               )}
             </div>
 
-            {/* Example Code */}
+            {/* Example Code - Full Width */}
             {currentSectionData.example && (
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 mt-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-2">
                     <Code className="w-5 h-5 text-purple-600" />
                     <h3 className="font-semibold text-gray-900">Ejemplo</h3>
                   </div>
                   <button
-                    onClick={() => copyCode(currentSectionData.example)}
+                    onClick={() => copyCode(currentSectionData.example || "")}
                     className="p-2 text-gray-500 hover:text-gray-700 transition-colors"
                   >
                     <Copy className="w-4 h-4" />
@@ -249,19 +310,19 @@ const Lesson: React.FC = () => {
                 <CodeEditor
                   code={currentSectionData.example}
                   readOnly={true}
-                  height="200px"
+                  height="min(400px, 40vh)"
                 />
               </div>
             )}
           </motion.div>
 
-          {/* Right Column - Exercise */}
+          {/* Exercise Section - Full Width */}
           {currentSectionData.type === "exercise" && (
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="space-y-6"
+              className="grid lg:grid-cols-2 gap-6"
             >
               <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
                 <div className="flex items-center justify-between mb-4">
@@ -278,9 +339,9 @@ const Lesson: React.FC = () => {
                     </button>
                     <button
                       onClick={runCode}
-                      disabled={isRunning}
+                      disabled={isRunning || pythonStatus !== "ready"}
                       className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors font-medium ${
-                        isRunning
+                        isRunning || pythonStatus !== "ready"
                           ? "bg-gray-400 text-white cursor-not-allowed"
                           : "bg-green-600 text-white hover:bg-green-700"
                       }`}
@@ -288,7 +349,15 @@ const Lesson: React.FC = () => {
                       <Play
                         className={`w-4 h-4 ${isRunning ? "animate-spin" : ""}`}
                       />
-                      <span>{isRunning ? "Ejecutando..." : "Ejecutar"}</span>
+                      <span>
+                        {pythonStatus === "loading"
+                          ? "Cargando Python..."
+                          : pythonStatus === "error"
+                          ? "Error en Python"
+                          : isRunning
+                          ? "Ejecutando..."
+                          : "Ejecutar"}
+                      </span>
                     </button>
                   </div>
                 </div>
@@ -297,7 +366,7 @@ const Lesson: React.FC = () => {
                   code={exerciseCode}
                   onChange={setExerciseCode}
                   readOnly={false}
-                  height="300px"
+                  height="min(500px, 50vh)"
                 />
               </div>
 
@@ -317,7 +386,7 @@ const Lesson: React.FC = () => {
                     </button>
                   )}
                 </div>
-                <div className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm min-h-[120px] max-h-[300px] overflow-y-auto border-2 border-gray-800">
+                <div className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm min-h-[120px] max-h-[min(400px,35vh)] overflow-y-auto border-2 border-gray-800">
                   {exerciseResult && (
                     <div className="whitespace-pre-line leading-relaxed">
                       {exerciseResult}

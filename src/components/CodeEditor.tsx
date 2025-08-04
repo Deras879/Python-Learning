@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useRef, useState } from "react";
 
 interface CodeEditorProps {
   code: string;
@@ -15,6 +15,10 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
   height = "200px",
   language = "python",
 }) => {
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const lineNumbersRef = useRef<HTMLDivElement>(null);
+  const [scrollTop, setScrollTop] = useState(0);
+
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (!readOnly && onChange) {
       onChange(e.target.value);
@@ -38,12 +42,24 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
     }
   };
 
+  const handleScroll = (e: React.UIEvent<HTMLTextAreaElement>) => {
+    const scrollTop = e.currentTarget.scrollTop;
+    setScrollTop(scrollTop);
+    if (lineNumbersRef.current) {
+      lineNumbersRef.current.scrollTop = scrollTop;
+    }
+  };
+
   const lineNumbers = useMemo(() => {
     const lines = code.split("\n");
     return lines.map((_, index) => (
       <div
         key={index}
-        className="text-gray-400 text-right pr-3 select-none text-sm leading-6 font-mono"
+        className="text-gray-400 text-right pr-3 select-none text-sm font-mono"
+        style={{
+          lineHeight: "1.5", // Exactamente la misma altura que el textarea
+          height: "21px", // 14px (text-sm) * 1.5 = 21px
+        }}
       >
         {index + 1}
       </div>
@@ -51,26 +67,42 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
   }, [code]);
 
   return (
-    <div className="relative border border-gray-300 rounded-lg overflow-hidden bg-gray-900 shadow-inner">
-      <div className="flex">
+    <div
+      className="relative border border-gray-300 rounded-lg overflow-hidden bg-gray-900 shadow-inner"
+      style={{ height: height }}
+    >
+      <div className="flex h-full">
         {/* Line numbers */}
-        <div className="bg-gray-800 py-3 px-2 border-r border-gray-700 min-w-[50px]">
-          {lineNumbers}
+        <div
+          ref={lineNumbersRef}
+          className="bg-gray-800 border-r border-gray-700 min-w-[50px] overflow-hidden flex flex-col"
+          style={{
+            height: height,
+            paddingTop: "12px", // Mismo padding que el textarea (p-3 = 12px)
+            paddingBottom: "12px",
+            paddingLeft: "8px",
+            paddingRight: "8px",
+          }}
+        >
+          <div className="flex flex-col">{lineNumbers}</div>
         </div>
 
         {/* Code area */}
         <div className="flex-1 relative">
           <textarea
+            ref={textareaRef}
             value={code}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
+            onScroll={handleScroll}
             readOnly={readOnly}
             className="w-full p-3 bg-gray-900 text-green-400 font-mono text-sm resize-none outline-none leading-6 border-none"
             style={{
-              minHeight: height,
+              height: height,
               fontFamily: 'Monaco, Menlo, "Ubuntu Mono", Consolas, monospace',
               backgroundColor: "#111827",
               color: "#10B981",
+              lineHeight: "1.5", // 24px (text-sm=14px * 1.5 = 21px, pero necesitamos que sea exactamente 24px para leading-6)
             }}
             spellCheck={false}
             autoComplete="off"

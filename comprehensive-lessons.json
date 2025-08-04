@@ -31,7 +31,6 @@
         }
       ]
     },
-
     "variables-basic": {
       "title": "Variables y Asignación",
       "sections": [
@@ -63,7 +62,6 @@
         }
       ]
     },
-
     "data-types-basic": {
       "title": "Tipos de Datos Primitivos",
       "sections": [
@@ -95,7 +93,6 @@
         }
       ]
     },
-
     "input-output": {
       "title": "Entrada y Salida de Datos",
       "sections": [
@@ -127,7 +124,6 @@
         }
       ]
     },
-
     "operators-arithmetic": {
       "title": "Operadores Aritméticos",
       "sections": [
@@ -159,7 +155,6 @@
         }
       ]
     },
-
     "operators-comparison": {
       "title": "Operadores de Comparación",
       "sections": [
@@ -191,7 +186,6 @@
         }
       ]
     },
-
     "operators-logical": {
       "title": "Operadores Lógicos",
       "sections": [
@@ -223,7 +217,6 @@
         }
       ]
     },
-
     "conditionals-basic": {
       "title": "Estructuras Condicionales",
       "sections": [
@@ -255,7 +248,6 @@
         }
       ]
     },
-
     "loops-for": {
       "title": "Bucles For",
       "sections": [
@@ -281,7 +273,6 @@
         }
       ]
     },
-
     "loops-while": {
       "title": "Bucles While",
       "sections": [
@@ -307,7 +298,6 @@
         }
       ]
     },
-
     "strings-basic": {
       "title": "Strings Básicos",
       "sections": [
@@ -333,7 +323,6 @@
         }
       ]
     },
-
     "strings-advanced": {
       "title": "Strings Avanzados",
       "sections": [
@@ -435,52 +424,52 @@
       ]
     },
     "file-handling": {
-      "title": "Manejo de Archivos",
+      "title": "Manejo de Archivos y Directorios",
       "sections": [
         {
           "type": "theory",
-          "title": "Trabajando con archivos",
-          "content": "Python permite leer y escribir archivos de forma sencilla. El manejo de archivos es fundamental para guardar datos, configuraciones y resultados.\n\nModos de apertura principales:\n• 'r': lectura (por defecto)\n• 'w': escritura (sobrescribe el archivo)\n• 'a': añadir al final del archivo\n• 'r+': lectura y escritura\n• 'x': creación exclusiva (falla si existe)",
-          "example": "# Escribir un archivo\nwith open('mi_archivo.txt', 'w') as archivo:\n    archivo.write('Hola, mundo!\\n')\n    archivo.write('Esta es la segunda línea\\n')\n    archivo.write('Python es genial\\n')\n\nprint('Archivo creado exitosamente')\n\n# Leer todo el archivo\nwith open('mi_archivo.txt', 'r') as archivo:\n    contenido = archivo.read()\n    print('Contenido completo:')\n    print(contenido)\n\n# Leer línea por línea\nwith open('mi_archivo.txt', 'r') as archivo:\n    print('\\nLeyendo línea por línea:')\n    for numero_linea, linea in enumerate(archivo, 1):\n        print(f'Línea {numero_linea}: {linea.strip()}')"
+          "title": "Leer y Escribir Archivos",
+          "content": "Python permite leer y escribir archivos fácilmente con `open()`:\n\n• Modo 'r' (lectura), 'w' (escritura), 'a' (agregar)\n• Siempre cierra el archivo o usa `with` para cerrar automáticamente",
+          "example": "# Escribir archivo\nwith open(\"datos.txt\", \"w\") as f:\n    f.write(\"Hola, mundo\\n\")\n    f.write(\"Otra línea\")\n\n# Leer archivo\nwith open(\"datos.txt\", \"r\") as f:\n    contenido = f.read()\n    print(contenido)"
         },
         {
           "type": "theory",
-          "title": "Procesamiento de archivos CSV",
-          "content": "Los archivos CSV (Comma Separated Values) son muy comunes para almacenar datos tabulares. Python tiene el módulo csv que facilita su manejo.\n\nOperaciones comunes:\n• Leer datos desde CSV\n• Escribir datos a CSV\n• Procesar datos fila por fila\n• Manejar encabezados",
-          "example": "import csv\n\n# Datos de ejemplo\nestudiantes = [\n    ['Nombre', 'Edad', 'Carrera', 'Promedio'],\n    ['Ana', 22, 'Informática', 8.5],\n    ['Carlos', 21, 'Ingeniería', 9.0],\n    ['María', 23, 'Matemáticas', 8.8]\n]\n\n# Escribir archivo CSV\nwith open('estudiantes.csv', 'w', newline='') as archivo:\n    escritor = csv.writer(archivo)\n    for fila in estudiantes:\n        escritor.writerow(fila)\n\nprint('Archivo CSV creado')\n\n# Leer archivo CSV\nwith open('estudiantes.csv', 'r') as archivo:\n    lector = csv.reader(archivo)\n    print('\\nContenido del CSV:')\n    for fila in lector:\n        print(f'{fila[0]:<12} {fila[1]:<5} {fila[2]:<12} {fila[3]}')\n\n# Procesar datos (calcular promedio general)\nwith open('estudiantes.csv', 'r') as archivo:\n    lector = csv.reader(archivo)\n    next(lector)  # saltar encabezado\n    total_promedio = 0\n    contador = 0\n    for fila in lector:\n        total_promedio += float(fila[3])\n        contador += 1\n    \n    print(f'\\nPromedio general: {total_promedio/contador:.2f}')"
+          "title": "Trabajar con Rutas y Archivos Existentes",
+          "content": "El módulo `os` y `pathlib` permite manipular rutas, verificar existencia de archivos y recorrer directorios.",
+          "example": "from pathlib import Path\n\nruta = Path(\"datos.txt\")\nif ruta.exists():\n    print(\"Archivo encontrado\")\n    print(\"Tamaño:\", ruta.stat().st_size, \"bytes\")\nelse:\n    print(\"Archivo no existe\")"
         },
         {
           "type": "exercise",
-          "title": "Sistema de notas",
-          "description": "Crea un sistema que guarde las notas de estudiantes en un archivo y permita consultar estadísticas.",
-          "startingCode": "# Sistema de gestión de notas\n\n# Datos iniciales de estudiantes\nestudiantes_notas = {\n    'Ana': [8.5, 9.0, 7.5, 8.8],\n    'Carlos': [9.0, 8.5, 9.5, 9.2],\n    'María': [7.8, 8.2, 8.0, 8.5],\n    'Luis': [6.5, 7.0, 7.5, 7.2]\n}\n\n# Función para guardar notas en archivo\ndef guardar_notas(datos, nombre_archivo):\n    \"\"\"Guarda las notas en un archivo de texto\"\"\"\n    # Tu código aquí\n    pass\n\n# Función para cargar notas desde archivo\ndef cargar_notas(nombre_archivo):\n    \"\"\"Carga las notas desde un archivo\"\"\"\n    # Tu código aquí\n    pass\n\n# Función para calcular estadísticas\ndef calcular_estadisticas(datos):\n    \"\"\"Calcula promedio por estudiante y general\"\"\"\n    # Tu código aquí\n    pass\n\n# Prueba tu sistema\n# guardar_notas(estudiantes_notas, 'notas.txt')\n# datos_cargados = cargar_notas('notas.txt')\n# calcular_estadisticas(datos_cargados)\n",
-          "solution": "import json\n\nestudiantes_notas = {\n    'Ana': [8.5, 9.0, 7.5, 8.8],\n    'Carlos': [9.0, 8.5, 9.5, 9.2],\n    'María': [7.8, 8.2, 8.0, 8.5],\n    'Luis': [6.5, 7.0, 7.5, 7.2]\n}\n\ndef guardar_notas(datos, nombre_archivo):\n    \"\"\"Guarda las notas en un archivo JSON\"\"\"\n    try:\n        with open(nombre_archivo, 'w') as archivo:\n            json.dump(datos, archivo, indent=2)\n        print(f'Notas guardadas en {nombre_archivo}')\n        return True\n    except Exception as e:\n        print(f'Error al guardar: {e}')\n        return False\n\ndef cargar_notas(nombre_archivo):\n    \"\"\"Carga las notas desde un archivo JSON\"\"\"\n    try:\n        with open(nombre_archivo, 'r') as archivo:\n            datos = json.load(archivo)\n        print(f'Notas cargadas desde {nombre_archivo}')\n        return datos\n    except FileNotFoundError:\n        print(f'Archivo {nombre_archivo} no encontrado')\n        return {}\n    except Exception as e:\n        print(f'Error al cargar: {e}')\n        return {}\n\ndef calcular_estadisticas(datos):\n    \"\"\"Calcula promedio por estudiante y general\"\"\"\n    if not datos:\n        print('No hay datos para procesar')\n        return\n    \n    print('\\n=== ESTADÍSTICAS DE NOTAS ===')\n    todos_promedios = []\n    \n    for estudiante, notas in datos.items():\n        promedio = sum(notas) / len(notas)\n        todos_promedios.append(promedio)\n        nota_max = max(notas)\n        nota_min = min(notas)\n        \n        print(f'{estudiante}:')\n        print(f'  Notas: {notas}')\n        print(f'  Promedio: {promedio:.2f}')\n        print(f'  Nota máxima: {nota_max}')\n        print(f'  Nota mínima: {nota_min}')\n        print()\n    \n    promedio_general = sum(todos_promedios) / len(todos_promedios)\n    print(f'Promedio general del curso: {promedio_general:.2f}')\n    print(f'Mejor estudiante: {max(datos.keys(), key=lambda x: sum(datos[x])/len(datos[x]))}')\n    \n    return {\n        'promedio_general': promedio_general,\n        'promedios_individuales': dict(zip(datos.keys(), todos_promedios))\n    }\n\n# Ejecutar el sistema\nprint('=== SISTEMA DE GESTIÓN DE NOTAS ===')\nguardar_notas(estudiantes_notas, 'notas.json')\ndatos_cargados = cargar_notas('notas.json')\nestadisticas = calcular_estadisticas(datos_cargados)",
-          "validation": "(code) => code.includes('open(') && code.includes('with') && code.includes('def ') && (code.includes('json') || code.includes('write') || code.includes('read'))"
+          "title": "Ejercicio: Crear y leer notas",
+          "description": "Crea un script que pida al usuario una nota, la guarde en un archivo, y luego lea todo el contenido guardado.",
+          "startingCode": "nota = input(\"Escribe tu nota: \")\n\n# Guardar nota\\with open(\"notas.txt\", \"a\") as f:\n    f.write(nota + \"\\n\")\n\n# Leer todas las notas\nwith open(\"notas.txt\", \"r\") as f:\n    print(\"\\nContenido actual:\")\n    print(f.read())",
+          "solution": "nota = input(\"Escribe tu nota: \")\n\nwith open(\"notas.txt\", \"a\") as f:\n    f.write(nota + \"\\n\")\n\nwith open(\"notas.txt\", \"r\") as f:\n    print(\"\\nContenido actual:\")\n    print(f.read())",
+          "validation": "(code) => code.includes('open') && code.includes('read') && code.includes('write')"
         }
       ]
     },
     "error-handling": {
-      "title": "Manejo de Errores",
+      "title": "Manejo de Errores y Excepciones",
       "sections": [
         {
           "type": "theory",
-          "title": "¿Por qué manejar errores?",
-          "content": "Los errores son inevitables en programación. Un buen manejo de errores hace que nuestros programas sean más robustos y proporcionen mejor experiencia al usuario.\n\nTipos comunes de errores:\n• SyntaxError: errores de sintaxis\n• NameError: variable no definida\n• TypeError: tipo de dato incorrecto\n• ValueError: valor incorrecto\n• FileNotFoundError: archivo no encontrado\n• ZeroDivisionError: división por cero",
-          "example": "# Ejemplos de errores comunes\n\n# 1. TypeError - tipo incorrecto\ntry:\n    resultado = '5' + 3  # no se puede sumar string y número\nexcept TypeError as e:\n    print(f'Error de tipo: {e}')\n    resultado = int('5') + 3  # corrección\n    print(f'Resultado corregido: {resultado}')\n\n# 2. ValueError - valor incorrecto\ntry:\n    numero = int('abc')  # 'abc' no es un número válido\nexcept ValueError as e:\n    print(f'Error de valor: {e}')\n    numero = 0  # valor por defecto\n    print(f'Usando valor por defecto: {numero}')\n\n# 3. ZeroDivisionError - división por cero\ntry:\n    division = 10 / 0\nexcept ZeroDivisionError as e:\n    print(f'Error de división: {e}')\n    print('No se puede dividir por cero')"
+          "title": "Manejo Básico de Excepciones",
+          "content": "Las excepciones permiten capturar errores sin detener el programa.\n\n• Usa try/except\n• Puedes capturar excepciones específicas\n• Usa finally para ejecutar siempre un bloque",
+          "example": "try:\n    x = int(input(\"Número: \"))\n    print(10 / x)\nexcept ZeroDivisionError:\n    print(\"No se puede dividir por cero\")\nexcept ValueError:\n    print(\"Ingresa un número válido\")\nfinally:\n    print(\"Fin del bloque try\")"
         },
         {
           "type": "theory",
-          "title": "try, except, else, finally",
-          "content": "Python usa try-except para capturar y manejar errores. También tenemos else y finally para control adicional:\n\n• try: código que puede generar error\n• except: maneja el error específico\n• else: se ejecuta si NO hay error\n• finally: se ejecuta SIEMPRE\n• raise: lanza un error personalizado",
-          "example": "def dividir_numeros(a, b):\n    \"\"\"Función que maneja división con errores\"\"\"\n    try:\n        print(f'Intentando dividir {a} entre {b}')\n        resultado = a / b\n    except ZeroDivisionError:\n        print('Error: No se puede dividir por cero')\n        return None\n    except TypeError:\n        print('Error: Los argumentos deben ser números')\n        return None\n    else:\n        print('División exitosa')\n        return resultado\n    finally:\n        print('Operación de división finalizada')\n\n# Pruebas\nprint('=== PRUEBAS DE DIVISIÓN ===')\nprint(f'Resultado 1: {dividir_numeros(10, 2)}')\nprint(f'Resultado 2: {dividir_numeros(10, 0)}')\nprint(f'Resultado 3: {dividir_numeros(\"10\", 2)}')\n\n# Lanzar errores personalizados\ndef validar_edad(edad):\n    if edad < 0:\n        raise ValueError('La edad no puede ser negativa')\n    if edad > 150:\n        raise ValueError('La edad no puede ser mayor a 150')\n    return True\n\ntry:\n    validar_edad(-5)\nexcept ValueError as e:\n    print(f'Error de validación: {e}')"
+          "title": "Raising y Definiendo Excepciones",
+          "content": "Puedes lanzar tus propias excepciones con raise y crear clases personalizadas que extienden de Exception.",
+          "example": "def dividir(a, b):\n    if b == 0:\n        raise ValueError(\"No se puede dividir por cero\")\n    return a / b\n\ntry:\n    print(dividir(10, 0))\nexcept ValueError as e:\n    print(\"Error:\", e)\n\n# Excepción personalizada\nclass MiError(Exception):\n    pass\n\nraise MiError(\"Esto es un error personalizado\")"
         },
         {
           "type": "exercise",
-          "title": "Calculadora robusta",
-          "description": "Crea una calculadora que maneje todos los posibles errores de entrada y operación.",
-          "startingCode": "# Calculadora con manejo robusto de errores\n\ndef obtener_numero(mensaje):\n    \"\"\"Obtiene un número del usuario con validación\"\"\"\n    # Tu código aquí\n    pass\n\ndef realizar_operacion(num1, num2, operador):\n    \"\"\"Realiza operación matemática con manejo de errores\"\"\"\n    # Tu código aquí\n    pass\n\ndef calculadora_principal():\n    \"\"\"Función principal de la calculadora\"\"\"\n    print('=== CALCULADORA ROBUSTA ===')\n    print('Operadores disponibles: +, -, *, /')\n    \n    # Tu código aquí:\n    # 1. Obtener números del usuario\n    # 2. Obtener operador\n    # 3. Realizar operación\n    # 4. Mostrar resultado\n    # 5. Manejar todos los errores posibles\n    \n    pass\n\n# Ejecutar calculadora\n# calculadora_principal()\n",
-          "solution": "def obtener_numero(mensaje):\n    \"\"\"Obtiene un número del usuario con validación\"\"\"\n    while True:\n        try:\n            entrada = input(mensaje)\n            numero = float(entrada)\n            return numero\n        except ValueError:\n            print(f'Error: \"{entrada}\" no es un número válido')\n            print('Por favor, introduce un número (ej: 5, 3.14, -2)')\n        except KeyboardInterrupt:\n            print('\\nOperación cancelada por el usuario')\n            return None\n\ndef obtener_operador():\n    \"\"\"Obtiene un operador válido del usuario\"\"\"\n    operadores_validos = ['+', '-', '*', '/']\n    while True:\n        operador = input('Introduce el operador (+, -, *, /): ').strip()\n        if operador in operadores_validos:\n            return operador\n        else:\n            print(f'Error: \"{operador}\" no es un operador válido')\n            print('Operadores válidos: +, -, *, /')\n\ndef realizar_operacion(num1, num2, operador):\n    \"\"\"Realiza operación matemática con manejo de errores\"\"\"\n    try:\n        if operador == '+':\n            return num1 + num2\n        elif operador == '-':\n            return num1 - num2\n        elif operador == '*':\n            return num1 * num2\n        elif operador == '/':\n            if num2 == 0:\n                raise ZeroDivisionError('No se puede dividir por cero')\n            return num1 / num2\n    except ZeroDivisionError as e:\n        print(f'Error de división: {e}')\n        return None\n    except Exception as e:\n        print(f'Error inesperado: {e}')\n        return None\n\ndef calculadora_principal():\n    \"\"\"Función principal de la calculadora\"\"\"\n    print('=== CALCULADORA ROBUSTA ===')\n    print('Operadores disponibles: +, -, *, /')\n    print('Presiona Ctrl+C para cancelar en cualquier momento\\n')\n    \n    try:\n        # Obtener primer número\n        num1 = obtener_numero('Introduce el primer número: ')\n        if num1 is None:\n            return\n        \n        # Obtener operador\n        operador = obtener_operador()\n        \n        # Obtener segundo número\n        num2 = obtener_numero('Introduce el segundo número: ')\n        if num2 is None:\n            return\n        \n        # Realizar operación\n        resultado = realizar_operacion(num1, num2, operador)\n        \n        if resultado is not None:\n            print(f'\\n=== RESULTADO ===')\n            print(f'{num1} {operador} {num2} = {resultado}')\n            \n            # Información adicional\n            if operador == '/':\n                print(f'Resultado redondeado: {round(resultado, 2)}')\n        else:\n            print('\\nNo se pudo completar la operación')\n            \n    except KeyboardInterrupt:\n        print('\\n\\nCalculadora cerrada por el usuario')\n    except Exception as e:\n        print(f'\\nError inesperado en la calculadora: {e}')\n    finally:\n        print('\\n¡Gracias por usar la calculadora!')\n\n# Simulación de la calculadora (en el ejercicio real usarías input())\nprint('=== DEMOSTRACIÓN ===')\nprint('Simulando: 10 / 2')\nresultado_demo = realizar_operacion(10, 2, '/')\nprint(f'Resultado: {resultado_demo}')\n\nprint('\\nSimulando: 10 / 0 (error)')\nresultado_error = realizar_operacion(10, 0, '/')\nprint(f'Resultado: {resultado_error}')\n\nprint('\\nSimulando operador inválido')\ntry:\n    resultado_invalido = realizar_operacion(5, 3, '%')\nexcept:\n    print('Operador no soportado')\n\n# Para ejecutar la calculadora interactiva, descomenta:\n# calculadora_principal()",
-          "validation": "(code) => code.includes('try:') && code.includes('except') && code.includes('def ') && (code.includes('ValueError') || code.includes('ZeroDivisionError'))"
+          "title": "Ejercicio: Validador de Entrada",
+          "description": "Pide un número entero positivo al usuario. Si no es válido, muestra un mensaje y vuelve a intentar hasta que lo sea.",
+          "startingCode": "while True:\n    try:\n        numero = int(input(\"Dame un número positivo: \"))\n        if numero <= 0:\n            raise ValueError(\"Debe ser mayor que 0\")\n        break\n    except ValueError as e:\n        print(f\"Error: {e}\")\n\nprint(f\"Número válido: {numero}\")",
+          "solution": "while True:\n    try:\n        numero = int(input(\"Dame un número positivo: \"))\n        if numero <= 0:\n            raise ValueError(\"Debe ser mayor que 0\")\n        break\n    except ValueError as e:\n        print(f\"Error: {e}\")\n\nprint(f\"Número válido: {numero}\")",
+          "validation": "(code) => code.includes('try') && code.includes('except') && code.includes('raise')"
         }
       ]
     },
@@ -584,7 +573,6 @@
         }
       ]
     },
-
     "web-scraping": {
       "title": "Web Scraping con Python",
       "sections": [
@@ -604,7 +592,6 @@
         }
       ]
     },
-
     "apis-rest": {
       "title": "Consumo de APIs REST",
       "sections": [
@@ -624,7 +611,6 @@
         }
       ]
     },
-
     "manejo-archivos": {
       "title": "Procesamiento Avanzado de Archivos",
       "sections": [
@@ -641,6 +627,275 @@
           "startingCode": "# Sistema de análisis de ventas con procesamiento de archivos\nimport json\nimport csv\nfrom datetime import datetime, timedelta\nfrom collections import defaultdict\n\n# Datos simulados de ventas\nventas_datos = [\n    {'fecha': '2024-08-01', 'producto': 'Laptop', 'cantidad': 2, 'precio_unitario': 999.99, 'vendedor': 'Ana García', 'region': 'Norte'},\n    {'fecha': '2024-08-01', 'producto': 'Mouse', 'cantidad': 5, 'precio_unitario': 29.99, 'vendedor': 'Carlos López', 'region': 'Sur'},\n    {'fecha': '2024-08-02', 'producto': 'Teclado', 'cantidad': 3, 'precio_unitario': 79.99, 'vendedor': 'Ana García', 'region': 'Norte'},\n    {'fecha': '2024-08-02', 'producto': 'Monitor', 'cantidad': 1, 'precio_unitario': 299.99, 'vendedor': 'María Rodríguez', 'region': 'Centro'},\n    {'fecha': '2024-08-03', 'producto': 'Laptop', 'cantidad': 1, 'precio_unitario': 999.99, 'vendedor': 'Carlos López', 'region': 'Sur'},\n    {'fecha': '2024-08-03', 'producto': 'Mouse', 'cantidad': 8, 'precio_unitario': 29.99, 'vendedor': 'María Rodríguez', 'region': 'Centro'}\n]\n\nclass AnalizadorVentas:\n    \"\"\"Sistema de análisis de ventas con manejo de archivos\"\"\"\n    \n    def __init__(self):\n        # Tu código aquí\n        pass\n    \n    def procesar_ventas(self, datos_ventas):\n        \"\"\"Procesa datos de ventas y calcula métricas\"\"\"\n        # Tu código aquí\n        pass\n    \n    def generar_reporte_diario(self, fecha):\n        \"\"\"Genera reporte de ventas por día\"\"\"\n        # Tu código aquí\n        pass\n    \n    def analizar_vendedores(self):\n        \"\"\"Analiza rendimiento de vendedores\"\"\"\n        # Tu código aquí\n        pass\n    \n    def exportar_csv(self, datos, nombre_archivo):\n        \"\"\"Exporta datos a formato CSV\"\"\"\n        # Tu código aquí\n        pass\n    \n    def exportar_json(self, datos, nombre_archivo):\n        \"\"\"Exporta datos a formato JSON\"\"\"\n        # Tu código aquí\n        pass\n\n# Prueba tu implementación\n# analizador = AnalizadorVentas()\n# analizador.procesar_ventas(ventas_datos)\n",
           "solution": "# Sistema de análisis de ventas con procesamiento de archivos\nimport json\nimport csv\nfrom datetime import datetime, timedelta\nfrom collections import defaultdict\n\n# Datos simulados de ventas\nventas_datos = [\n    {'fecha': '2024-08-01', 'producto': 'Laptop', 'cantidad': 2, 'precio_unitario': 999.99, 'vendedor': 'Ana García', 'region': 'Norte'},\n    {'fecha': '2024-08-01', 'producto': 'Mouse', 'cantidad': 5, 'precio_unitario': 29.99, 'vendedor': 'Carlos López', 'region': 'Sur'},\n    {'fecha': '2024-08-02', 'producto': 'Teclado', 'cantidad': 3, 'precio_unitario': 79.99, 'vendedor': 'Ana García', 'region': 'Norte'},\n    {'fecha': '2024-08-02', 'producto': 'Monitor', 'cantidad': 1, 'precio_unitario': 299.99, 'vendedor': 'María Rodríguez', 'region': 'Centro'},\n    {'fecha': '2024-08-03', 'producto': 'Laptop', 'cantidad': 1, 'precio_unitario': 999.99, 'vendedor': 'Carlos López', 'region': 'Sur'},\n    {'fecha': '2024-08-03', 'producto': 'Mouse', 'cantidad': 8, 'precio_unitario': 29.99, 'vendedor': 'María Rodríguez', 'region': 'Centro'}\n]\n\nclass AnalizadorVentas:\n    \"\"\"Sistema de análisis de ventas con manejo de archivos\"\"\"\n    \n    def __init__(self):\n        self.ventas = []\n        self.metricas = {}\n        self.reportes_generados = []\n    \n    def procesar_ventas(self, datos_ventas):\n        \"\"\"Procesa datos de ventas y calcula métricas\"\"\"\n        self.ventas = datos_ventas.copy()\n        \n        # Calcular total de ventas para cada registro\n        for venta in self.ventas:\n            venta['total'] = venta['cantidad'] * venta['precio_unitario']\n            venta['fecha_obj'] = datetime.strptime(venta['fecha'], '%Y-%m-%d')\n        \n        # Calcular métricas generales\n        self.metricas = {\n            'total_ventas': sum(v['total'] for v in self.ventas),\n            'total_unidades': sum(v['cantidad'] for v in self.ventas),\n            'numero_transacciones': len(self.ventas),\n            'ticket_promedio': 0,\n            'fecha_inicio': min(v['fecha'] for v in self.ventas),\n            'fecha_fin': max(v['fecha'] for v in self.ventas)\n        }\n        \n        if self.metricas['numero_transacciones'] > 0:\n            self.metricas['ticket_promedio'] = self.metricas['total_ventas'] / self.metricas['numero_transacciones']\n        \n        print('✅ Datos de ventas procesados exitosamente')\n        print(f'   • Total de transacciones: {self.metricas[\"numero_transacciones\"]}')\n        print(f'   • Ventas totales: ${self.metricas[\"total_ventas\"]:,.2f}')\n        print(f'   • Ticket promedio: ${self.metricas[\"ticket_promedio\"]:,.2f}')\n        \n        return self.metricas\n    \n    def generar_reporte_diario(self, fecha):\n        \"\"\"Genera reporte de ventas por día\"\"\"\n        ventas_dia = [v for v in self.ventas if v['fecha'] == fecha]\n        \n        if not ventas_dia:\n            return {\n                'fecha': fecha,\n                'error': 'No se encontraron ventas para esta fecha'\n            }\n        \n        # Análisis del día\n        total_dia = sum(v['total'] for v in ventas_dia)\n        unidades_dia = sum(v['cantidad'] for v in ventas_dia)\n        \n        # Ventas por producto\n        productos = defaultdict(lambda: {'cantidad': 0, 'total': 0})\n        for venta in ventas_dia:\n            productos[venta['producto']]['cantidad'] += venta['cantidad']\n            productos[venta['producto']]['total'] += venta['total']\n        \n        # Ventas por vendedor\n        vendedores = defaultdict(lambda: {'transacciones': 0, 'total': 0, 'unidades': 0})\n        for venta in ventas_dia:\n            vendedores[venta['vendedor']]['transacciones'] += 1\n            vendedores[venta['vendedor']]['total'] += venta['total']\n            vendedores[venta['vendedor']]['unidades'] += venta['cantidad']\n        \n        # Ventas por región\n        regiones = defaultdict(lambda: {'transacciones': 0, 'total': 0})\n        for venta in ventas_dia:\n            regiones[venta['region']]['transacciones'] += 1\n            regiones[venta['region']]['total'] += venta['total']\n        \n        reporte = {\n            'fecha': fecha,\n            'resumen': {\n                'total_ventas': total_dia,\n                'total_unidades': unidades_dia,\n                'numero_transacciones': len(ventas_dia),\n                'ticket_promedio': total_dia / len(ventas_dia)\n            },\n            'productos': dict(productos),\n            'vendedores': dict(vendedores),\n            'regiones': dict(regiones),\n            'transacciones': ventas_dia\n        }\n        \n        return reporte\n    \n    def analizar_vendedores(self):\n        \"\"\"Analiza rendimiento de vendedores\"\"\"\n        vendedores_stats = defaultdict(lambda: {\n            'transacciones': 0,\n            'total_ventas': 0,\n            'total_unidades': 0,\n            'productos_vendidos': set(),\n            'regiones_cubiertas': set(),\n            'dias_activos': set()\n        })\n        \n        for venta in self.ventas:\n            vendedor = venta['vendedor']\n            vendedores_stats[vendedor]['transacciones'] += 1\n            vendedores_stats[vendedor]['total_ventas'] += venta['total']\n            vendedores_stats[vendedor]['total_unidades'] += venta['cantidad']\n            vendedores_stats[vendedor]['productos_vendidos'].add(venta['producto'])\n            vendedores_stats[vendedor]['regiones_cubiertas'].add(venta['region'])\n            vendedores_stats[vendedor]['dias_activos'].add(venta['fecha'])\n        \n        # Convertir sets a listas y calcular métricas adicionales\n        for vendedor, stats in vendedores_stats.items():\n            stats['productos_vendidos'] = list(stats['productos_vendidos'])\n            stats['regiones_cubiertas'] = list(stats['regiones_cubiertas'])\n            stats['dias_activos'] = len(stats['dias_activos'])\n            stats['venta_promedio_por_transaccion'] = (\n                stats['total_ventas'] / stats['transacciones'] \n                if stats['transacciones'] > 0 else 0\n            )\n            stats['diversidad_productos'] = len(stats['productos_vendidos'])\n            stats['cobertura_regional'] = len(stats['regiones_cubiertas'])\n        \n        return dict(vendedores_stats)\n    \n    def analizar_productos(self):\n        \"\"\"Analiza rendimiento de productos\"\"\"\n        productos_stats = defaultdict(lambda: {\n            'total_vendido': 0,\n            'unidades_vendidas': 0,\n            'numero_transacciones': 0,\n            'precio_promedio': 0,\n            'vendedores': set(),\n            'regiones': set()\n        })\n        \n        for venta in self.ventas:\n            producto = venta['producto']\n            productos_stats[producto]['total_vendido'] += venta['total']\n            productos_stats[producto]['unidades_vendidas'] += venta['cantidad']\n            productos_stats[producto]['numero_transacciones'] += 1\n            productos_stats[producto]['vendedores'].add(venta['vendedor'])\n            productos_stats[producto]['regiones'].add(venta['region'])\n        \n        # Calcular métricas adicionales\n        for producto, stats in productos_stats.items():\n            stats['vendedores'] = list(stats['vendedores'])\n            stats['regiones'] = list(stats['regiones'])\n            stats['precio_promedio'] = (\n                stats['total_vendido'] / stats['unidades_vendidas']\n                if stats['unidades_vendidas'] > 0 else 0\n            )\n            stats['venta_promedio_por_transaccion'] = (\n                stats['total_vendido'] / stats['numero_transacciones']\n                if stats['numero_transacciones'] > 0 else 0\n            )\n        \n        return dict(productos_stats)\n    \n    def exportar_csv(self, datos, nombre_archivo):\n        \"\"\"Exporta datos a formato CSV\"\"\"\n        print(f'📄 Exportando a CSV: {nombre_archivo}.csv')\n        \n        if isinstance(datos, list) and datos:\n            # Determinar encabezados\n            headers = list(datos[0].keys())\n            \n            # Mostrar contenido CSV\n            print(','.join(headers))\n            for fila in datos:\n                valores = []\n                for header in headers:\n                    valor = fila.get(header, '')\n                    if isinstance(valor, (list, set)):\n                        valor = ';'.join(str(v) for v in valor)\n                    valores.append(str(valor))\n                print(','.join(valores))\n        \n        print(f'✅ CSV exportado: {nombre_archivo}.csv')\n        return f'{nombre_archivo}.csv'\n    \n    def exportar_json(self, datos, nombre_archivo):\n        \"\"\"Exporta datos a formato JSON\"\"\"\n        print(f'📄 Exportando a JSON: {nombre_archivo}.json')\n        \n        # Preparar datos para JSON (convertir sets a listas)\n        datos_json = self._preparar_para_json(datos)\n        \n        json_str = json.dumps(datos_json, indent=2, ensure_ascii=False, default=str)\n        print(json_str)\n        \n        print(f'✅ JSON exportado: {nombre_archivo}.json')\n        return f'{nombre_archivo}.json'\n    \n    def _preparar_para_json(self, obj):\n        \"\"\"Prepara objetos para serialización JSON\"\"\"\n        if isinstance(obj, dict):\n            return {k: self._preparar_para_json(v) for k, v in obj.items()}\n        elif isinstance(obj, list):\n            return [self._preparar_para_json(item) for item in obj]\n        elif isinstance(obj, set):\n            return list(obj)\n        elif isinstance(obj, datetime):\n            return obj.isoformat()\n        else:\n            return obj\n    \n    def generar_dashboard(self):\n        \"\"\"Genera un dashboard completo con todas las métricas\"\"\"\n        print('📊 DASHBOARD DE VENTAS')\n        print('=' * 50)\n        \n        # Métricas generales\n        print(f'\\n💰 RESUMEN GENERAL:')\n        print(f'   • Periodo: {self.metricas[\"fecha_inicio\"]} - {self.metricas[\"fecha_fin\"]}')\n        print(f'   • Total de ventas: ${self.metricas[\"total_ventas\"]:,.2f}')\n        print(f'   • Total de unidades: {self.metricas[\"total_unidades\"]:,}')\n        print(f'   • Número de transacciones: {self.metricas[\"numero_transacciones\"]}')\n        print(f'   • Ticket promedio: ${self.metricas[\"ticket_promedio\"]:,.2f}')\n        \n        # Top vendedores\n        vendedores_data = self.analizar_vendedores()\n        top_vendedores = sorted(vendedores_data.items(), \n                               key=lambda x: x[1]['total_ventas'], reverse=True)\n        \n        print(f'\\n🏆 TOP VENDEDORES:')\n        for i, (vendedor, stats) in enumerate(top_vendedores[:3], 1):\n            print(f'   {i}. {vendedor}')\n            print(f'      💰 Ventas: ${stats[\"total_ventas\"]:,.2f}')\n            print(f'      📦 Unidades: {stats[\"total_unidades\"]}')\n            print(f'      🎯 Transacciones: {stats[\"transacciones\"]}')\n            print(f'      📊 Promedio/transacción: ${stats[\"venta_promedio_por_transaccion\"]:,.2f}')\n        \n        # Top productos\n        productos_data = self.analizar_productos()\n        top_productos = sorted(productos_data.items(), \n                              key=lambda x: x[1]['total_vendido'], reverse=True)\n        \n        print(f'\\n🎯 TOP PRODUCTOS:')\n        for i, (producto, stats) in enumerate(top_productos[:3], 1):\n            print(f'   {i}. {producto}')\n            print(f'      💰 Ventas: ${stats[\"total_vendido\"]:,.2f}')\n            print(f'      📦 Unidades: {stats[\"unidades_vendidas\"]}')\n            print(f'      💵 Precio promedio: ${stats[\"precio_promedio\"]:,.2f}')\n            print(f'      🌍 Regiones: {len(stats[\"regiones\"])}')\n        \n        # Análisis por región\n        regiones_data = defaultdict(lambda: {'total': 0, 'transacciones': 0})\n        for venta in self.ventas:\n            regiones_data[venta['region']]['total'] += venta['total']\n            regiones_data[venta['region']]['transacciones'] += 1\n        \n        print(f'\\n🌍 ANÁLISIS POR REGIÓN:')\n        for region, stats in sorted(regiones_data.items(), \n                                   key=lambda x: x[1]['total'], reverse=True):\n            promedio = stats['total'] / stats['transacciones'] if stats['transacciones'] > 0 else 0\n            print(f'   • {region}: ${stats[\"total\"]:,.2f} ({stats[\"transacciones\"]} transacciones, promedio: ${promedio:.2f})')\n        \n        return {\n            'metricas_generales': self.metricas,\n            'vendedores': vendedores_data,\n            'productos': productos_data,\n            'regiones': dict(regiones_data)\n        }\n\n# Demostración completa del sistema\nprint('📈 SISTEMA DE ANÁLISIS DE VENTAS')\nprint('=' * 50)\n\nanalizador = AnalizadorVentas()\n\n# 1. Procesar datos de ventas\nprint('\\n1. PROCESANDO DATOS DE VENTAS:')\nmetricas = analizador.procesar_ventas(ventas_datos)\n\n# 2. Generar reportes diarios\nprint('\\n\\n2. REPORTES DIARIOS:')\nfechas_unicas = list(set(v['fecha'] for v in ventas_datos))\nfor fecha in sorted(fechas_unicas):\n    print(f'\\n📅 Reporte del {fecha}:')\n    reporte_dia = analizador.generar_reporte_diario(fecha)\n    print(f'   💰 Total del día: ${reporte_dia[\"resumen\"][\"total_ventas\"]:,.2f}')\n    print(f'   📦 Unidades vendidas: {reporte_dia[\"resumen\"][\"total_unidades\"]}')\n    print(f'   🎯 Transacciones: {reporte_dia[\"resumen\"][\"numero_transacciones\"]}')\n    \n    print(f'   🏆 Top vendedor del día:')\n    top_vendedor_dia = max(reporte_dia['vendedores'].items(), key=lambda x: x[1]['total'])\n    print(f'      • {top_vendedor_dia[0]}: ${top_vendedor_dia[1][\"total\"]:,.2f}')\n\n# 3. Análisis completo de vendedores\nprint('\\n\\n3. ANÁLISIS DETALLADO DE VENDEDORES:')\nvendedores_analisis = analizador.analizar_vendedores()\nfor vendedor, stats in vendedores_analisis.items():\n    print(f'\\n👤 {vendedor}:')\n    print(f'   💰 Total de ventas: ${stats[\"total_ventas\"]:,.2f}')\n    print(f'   📦 Unidades vendidas: {stats[\"total_unidades\"]}')\n    print(f'   🎯 Transacciones: {stats[\"transacciones\"]}')\n    print(f'   📊 Promedio por transacción: ${stats[\"venta_promedio_por_transaccion\"]:,.2f}')\n    print(f'   🏷️  Productos vendidos: {stats[\"diversidad_productos\"]} tipos')\n    print(f'   🌍 Regiones cubiertas: {stats[\"cobertura_regional\"]}')\n    print(f'   📅 Días activos: {stats[\"dias_activos\"]}')\n\n# 4. Dashboard completo\nprint('\\n\\n4. DASHBOARD COMPLETO:')\ndashboard_data = analizador.generar_dashboard()\n\n# 5. Exportar datos\nprint('\\n\\n5. EXPORTANDO DATOS:')\n\n# Exportar ventas detalladas a CSV\nprint('\\nExportando ventas detalladas:')\nanalizador.exportar_csv(ventas_datos, 'ventas_detalladas')\n\n# Exportar resumen de vendedores a JSON\nprint('\\nExportando análisis de vendedores:')\nanalizador.exportar_json(vendedores_analisis, 'analisis_vendedores')\n\n# Exportar dashboard completo a JSON\nprint('\\nExportando dashboard completo:')\nanalizador.exportar_json(dashboard_data, 'dashboard_completo')\n\n# 6. Análisis de tendencias\nprint('\\n\\n6. ANÁLISIS DE TENDENCIAS:')\nventas_por_fecha = defaultdict(lambda: {'total': 0, 'unidades': 0, 'transacciones': 0})\nfor venta in ventas_datos:\n    fecha = venta['fecha']\n    ventas_por_fecha[fecha]['total'] += venta['total']\n    ventas_por_fecha[fecha]['unidades'] += venta['cantidad']\n    ventas_por_fecha[fecha]['transacciones'] += 1\n\nprint('📈 Evolución diaria:')\nfor fecha in sorted(ventas_por_fecha.keys()):\n    stats = ventas_por_fecha[fecha]\n    print(f'   {fecha}: ${stats[\"total\"]:,.2f} ({stats[\"unidades\"]} unidades, {stats[\"transacciones\"]} trans.)')\n\n# Calcular crecimiento\nfechas_ordenadas = sorted(ventas_por_fecha.keys())\nif len(fechas_ordenadas) > 1:\n    primer_dia = ventas_por_fecha[fechas_ordenadas[0]]['total']\n    ultimo_dia = ventas_por_fecha[fechas_ordenadas[-1]]['total']\n    if primer_dia > 0:\n        crecimiento = ((ultimo_dia - primer_dia) / primer_dia) * 100\n        print(f'\\n📊 Crecimiento del primer al último día: {crecimiento:+.1f}%')\n\nprint('\\n' + '='*50)\nprint('ANÁLISIS DE VENTAS COMPLETADO')\nprint('='*50)",
           "validation": "(code) => code.includes('class AnalizadorVentas') && code.includes('def procesar_ventas') && code.includes('def generar_reporte_diario') && code.includes('def exportar_csv') && code.includes('def exportar_json')"
+        }
+      ]
+    },
+    "tuples-sets": {
+      "title": "Tuplas y Sets",
+      "sections": [
+        {
+          "type": "theory",
+          "title": "¿Qué es una tupla?",
+          "content": "Una tupla es una colección de elementos ordenada e inmutable. Se define con paréntesis ().\n\nCaracterísticas:\n• No se puede modificar (inmutable)\n• Se puede recorrer como una lista\n• Puede contener diferentes tipos de datos",
+          "example": "# Crear una tupla\ntupla = (1, 2, 3)\nprint(tupla[0])  # 1\n\n# Tupla con diferentes tipos\ndatos = (\"Ana\", 25, True)\n\n# Desempaquetado\na, b, c = tupla\nprint(a, b, c)\n\n# Convertir a lista\nlista = list(tupla)\nprint(lista)"
+        },
+        {
+          "type": "theory",
+          "title": "¿Qué es un set?",
+          "content": "Un set es una colección desordenada y sin elementos duplicados. Se define con llaves {} o la función set().\n\nCaracterísticas:\n• No tiene orden\n• No permite duplicados\n• Ideal para operaciones de conjuntos",
+          "example": "# Crear un set\nmi_set = {1, 2, 3, 2}\nprint(mi_set)  # {1, 2, 3}\n\n# Añadir y eliminar\nmi_set.add(4)\nmi_set.remove(2)\n\n# Operaciones de conjuntos\npares = {2, 4, 6}\nimpares = {1, 3, 5}\nunion = pares | impares\nprint(union)  # {1, 2, 3, 4, 5, 6}"
+        },
+        {
+          "type": "exercise",
+          "title": "Ejercicio: Desempaquetar y Conjuntos",
+          "description": "Desempaqueta una tupla con datos personales y crea un set con hobbies sin duplicados.",
+          "startingCode": "# Desempaquetar tupla y usar set\ninfo = (\"Juan\", 30, \"Colombia\")\n\n# Tu código aquí:\nnombre, edad, pais = info\n\n# Lista de hobbies con duplicados\nhobbies = [\"leer\", \"programar\", \"leer\", \"jugar\"]\nhobbies_unicos = set(hobbies)\n\n# Imprime resultados\nprint(f\"Nombre: {nombre}\")\nprint(f\"Edad: {edad}\")\nprint(f\"País: {pais}\")\nprint(f\"Hobbies únicos: {hobbies_unicos}\")",
+          "solution": "info = (\"Juan\", 30, \"Colombia\")\nnombre, edad, pais = info\nhobbies = [\"leer\", \"programar\", \"leer\", \"jugar\"]\nhobbies_unicos = set(hobbies)\nprint(f\"Nombre: {nombre}\")\nprint(f\"Edad: {edad}\")\nprint(f\"País: {pais}\")\nprint(f\"Hobbies únicos: {hobbies_unicos}\")",
+          "validation": "(code) => code.includes('set(') && code.includes('print') && code.includes('=')"
+        }
+      ]
+    },
+    "functions-advanced": {
+      "title": "Funciones Avanzadas",
+      "sections": [
+        {
+          "type": "theory",
+          "title": "Funciones con *args y **kwargs",
+          "content": "Python permite que las funciones acepten un número variable de argumentos:\n\n• *args: Recibe argumentos posicionales como una tupla\n• **kwargs: Recibe argumentos con nombre como un diccionario\n\nEsto es útil para funciones flexibles y reutilizables.",
+          "example": "# *args: múltiples argumentos posicionales\ndef suma(*args):\n    return sum(args)\n\nprint(suma(1, 2, 3))  # 6\n\n# **kwargs: múltiples argumentos nombrados\ndef presentar(**kwargs):\n    for clave, valor in kwargs.items():\n        print(f\"{clave}: {valor}\")\n\npresentar(nombre=\"Ana\", edad=30)"
+        },
+        {
+          "type": "theory",
+          "title": "Funciones Lambda, map, filter y reduce",
+          "content": "Las funciones lambda son funciones pequeñas y anónimas.\n\n• `lambda x: x * 2`\n• Se usan con funciones como map(), filter(), reduce()\n\nmap: aplica una función a cada elemento\filter: filtra elementos según condición\nreduce: aplica función acumulativa (requiere functools)",
+          "example": "from functools import reduce\n\nnumeros = [1, 2, 3, 4]\n\n# lambda\ncuadrados = list(map(lambda x: x**2, numeros))\nprint(cuadrados)\n\n# filter\npares = list(filter(lambda x: x % 2 == 0, numeros))\nprint(pares)\n\n# reduce\nproducto = reduce(lambda x, y: x * y, numeros)\nprint(producto)"
+        },
+        {
+          "type": "exercise",
+          "title": "Ejercicio: Función Flexible",
+          "description": "Crea una función que reciba cualquier cantidad de argumentos y devuelva la suma total, junto con un mensaje personalizado si se pasa como keyword.",
+          "startingCode": "# Tu función aquí\ndef sumar_con_mensaje(*args, **kwargs):\n    total = sum(args)\n    mensaje = kwargs.get(\"mensaje\", \"Resultado\")\n    return f\"{mensaje}: {total}\"\n\n# Prueba\nprint(sumar_con_mensaje(1, 2, 3, mensaje=\"Suma total\"))",
+          "solution": "def sumar_con_mensaje(*args, **kwargs):\n    total = sum(args)\n    mensaje = kwargs.get(\"mensaje\", \"Resultado\")\n    return f\"{mensaje}: {total}\"\n\nprint(sumar_con_mensaje(1, 2, 3, mensaje=\"Suma total\"))",
+          "validation": "(code) => code.includes('*args') && code.includes('**kwargs') && code.includes('return')"
+        }
+      ]
+    },
+    "oop-advanced": {
+      "title": "Programación Orientada a Objetos Avanzada",
+      "sections": [
+        {
+          "type": "theory",
+          "title": "Herencia en Python",
+          "content": "La herencia permite que una clase hija herede atributos y métodos de una clase padre.\nEsto fomenta la reutilización de código.\n\n• class Hija(Padre):\n• Se puede sobreescribir métodos con el mismo nombre\n• Se puede usar super() para acceder a la clase padre",
+          "example": "class Animal:\n    def hablar(self):\n        print(\"Hace un sonido\")\n\nclass Perro(Animal):\n    def hablar(self):\n        print(\"Ladra\")\n\nclass Gato(Animal):\n    def hablar(self):\n        super().hablar()\n        print(\"Maúlla\")\n\nPerro().hablar()  # Ladra\nGato().hablar()   # Hace un sonido \\n Maúlla"
+        },
+        {
+          "type": "theory",
+          "title": "Encapsulamiento y Propiedades",
+          "content": "Python permite controlar el acceso a los atributos con:\n• _atributo (protegido)\n• __atributo (privado)\n\nY con `@property` se pueden crear métodos que actúan como atributos.",
+          "example": "class Persona:\n    def __init__(self, nombre):\n        self.__nombre = nombre\n\n    @property\n    def nombre(self):\n        return self.__nombre\n\n    @nombre.setter\n    def nombre(self, nuevo):\n        if len(nuevo) >= 3:\n            self.__nombre = nuevo\n\np = Persona(\"Ana\")\nprint(p.nombre)\np.nombre = \"Luis\"\nprint(p.nombre)"
+        },
+        {
+          "type": "theory",
+          "title": "Polimorfismo y Métodos Abstractos",
+          "content": "Polimorfismo permite que distintas clases respondan a los mismos métodos.\nLas clases abstractas definen una interfaz que las subclases deben implementar.",
+          "example": "from abc import ABC, abstractmethod\n\nclass Figura(ABC):\n    @abstractmethod\n    def area(self):\n        pass\n\nclass Cuadrado(Figura):\n    def __init__(self, lado):\n        self.lado = lado\n\n    def area(self):\n        return self.lado ** 2\n\nprint(Cuadrado(4).area())  # 16"
+        },
+        {
+          "type": "exercise",
+          "title": "Ejercicio: Herencia y Propiedades",
+          "description": "Crea una clase Vehiculo con atributos protegidos y métodos. Luego una subclase Auto que herede y sobreescriba un método.",
+          "startingCode": "class Vehiculo:\n    def __init__(self, marca):\n        self._marca = marca\n\n    def arrancar(self):\n        print(f\"{self._marca} arrancando...\")\n\nclass Auto(Vehiculo):\n    def arrancar(self):\n        print(f\"Auto {self._marca} listo para conducir\")\n\n# Prueba\nv = Vehiculo(\"Genérico\")\nv.arrancar()\na = Auto(\"Toyota\")\na.arrancar()",
+          "solution": "class Vehiculo:\n    def __init__(self, marca):\n        self._marca = marca\n\n    def arrancar(self):\n        print(f\"{self._marca} arrancando...\")\n\nclass Auto(Vehiculo):\n    def arrancar(self):\n        print(f\"Auto {self._marca} listo para conducir\")\n\nv = Vehiculo(\"Genérico\")\nv.arrancar()\na = Auto(\"Toyota\")\na.arrancar()",
+          "validation": "(code) => code.includes('class') && code.includes('def arrancar') && code.includes('Vehiculo') && code.includes('Auto')"
+        }
+      ]
+    },
+    "testing-debugging": {
+      "title": "Testing y Depuración",
+      "sections": [
+        {
+          "type": "theory",
+          "title": "Introducción al Testing",
+          "content": "Escribir pruebas asegura que tu código funcione como se espera.\n\n• Python incluye el módulo `unittest`\n• También existen librerías como `pytest`\n• Las pruebas deben ser automáticas y reproducibles",
+          "example": "import unittest\n\ndef suma(a, b):\n    return a + b\n\nclass TestSuma(unittest.TestCase):\n    def test_suma_positivos(self):\n        self.assertEqual(suma(2, 3), 5)\n\n    def test_suma_negativos(self):\n        self.assertEqual(suma(-1, -2), -3)\n\nif __name__ == '__main__':\n    unittest.main()"
+        },
+        {
+          "type": "theory",
+          "title": "Depuración con print() y breakpoint()",
+          "content": "Para encontrar errores en tu código, puedes usar:\n\n• print() para ver valores intermedios\n• breakpoint() desde Python 3.7 para pausar la ejecución e inspeccionar\n• IDEs también tienen herramientas de debugging integradas",
+          "example": "def calcular_total(precio, cantidad):\n    print(\"Precio:\", precio)\n    print(\"Cantidad:\", cantidad)\n    total = precio * cantidad\n    print(\"Total:\", total)\n    return total\n\n# Debugging interactivo\nx = 10\ny = 2\nbreakpoint()\nresultado = calcular_total(x, y)"
+        },
+        {
+          "type": "exercise",
+          "title": "Ejercicio: Crear un test automático",
+          "description": "Crea una función que verifique si un número es primo, y un archivo de pruebas que valide varios casos con `unittest`.",
+          "startingCode": "def es_primo(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n ** 0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\n# Tu test aquí\nimport unittest\n\nclass TestPrimos(unittest.TestCase):\n    def test_primos(self):\n        self.assertTrue(es_primo(7))\n        self.assertTrue(es_primo(13))\n        self.assertFalse(es_primo(4))\n        self.assertFalse(es_primo(1))\n\nif __name__ == '__main__':\n    unittest.main()",
+          "solution": "def es_primo(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n ** 0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\nimport unittest\n\nclass TestPrimos(unittest.TestCase):\n    def test_primos(self):\n        self.assertTrue(es_primo(7))\n        self.assertTrue(es_primo(13))\n        self.assertFalse(es_primo(4))\n        self.assertFalse(es_primo(1))\n\nif __name__ == '__main__':\n    unittest.main()",
+          "validation": "(code) => code.includes('unittest') and code.includes('def es_primo')"
+        }
+      ]
+    },
+    "cli-tools": {
+      "title": "Herramientas de Línea de Comandos",
+      "sections": [
+        {
+          "type": "theory",
+          "title": "Uso de argparse para interfaces de línea de comandos",
+          "content": "El módulo `argparse` permite crear herramientas que acepten argumentos desde la línea de comandos.\n\n• Define los argumentos esperados\n• `python archivo.py --opcion valor`\n• Ideal para scripts reutilizables",
+          "example": "import argparse\n\nparser = argparse.ArgumentParser(description=\"Calculadora simple\")\nparser.add_argument(\"a\", type=int, help=\"Primer número\")\nparser.add_argument(\"b\", type=int, help=\"Segundo número\")\nparser.add_argument(\"--operacion\", choices=[\"suma\", \"resta\"], default=\"suma\")\n\nargs = parser.parse_args()\n\nif args.operacion == \"suma\":\n    resultado = args.a + args.b\nelse:\n    resultado = args.a - args.b\n\nprint(f\"Resultado: {resultado}\")"
+        },
+        {
+          "type": "theory",
+          "title": "Argumentos Posicionales y Opcionales",
+          "content": "Los argumentos pueden ser:\n\n• Posicionales: obligatorios (como `a` y `b`)\n• Opcionales: con prefijos `--` o `-`\n\nPuedes agregar ayuda automática, valores por defecto y validación de tipos.",
+          "example": "import argparse\n\nparser = argparse.ArgumentParser()\nparser.add_argument(\"archivo\", help=\"Ruta del archivo a procesar\")\nparser.add_argument(\"--modo\", choices=[\"ver\", \"contar\"], default=\"ver\")\n\nargs = parser.parse_args()\n\nif args.modo == \"ver\":\n    print(open(args.archivo).read())\nelse:\n    lineas = len(open(args.archivo).readlines())\n    print(f\"Líneas: {lineas}\")"
+        },
+        {
+          "type": "exercise",
+          "title": "Ejercicio: CLI para Saludo Personalizado",
+          "description": "Crea un script CLI que reciba un nombre y un número de repeticiones para saludar usando argparse.",
+          "startingCode": "import argparse\n\nparser = argparse.ArgumentParser(description=\"Saludos desde la CLI\")\nparser.add_argument(\"nombre\", help=\"Tu nombre\")\nparser.add_argument(\"--veces\", type=int, default=1, help=\"Cuántas veces saludar\")\n\nargs = parser.parse_args()\n\nfor _ in range(args.veces):\n    print(f\"¡Hola, {args.nombre}!\")",
+          "solution": "import argparse\n\nparser = argparse.ArgumentParser(description=\"Saludos desde la CLI\")\nparser.add_argument(\"nombre\", help=\"Tu nombre\")\nparser.add_argument(\"--veces\", type=int, default=1, help=\"Cuántas veces saludar\")\n\nargs = parser.parse_args()\n\nfor _ in range(args.veces):\n    print(f\"¡Hola, {args.nombre}!\")",
+          "validation": "(code) => code.includes('argparse') and code.includes('add_argument') and code.includes('for')"
+        }
+      ]
+    },
+    "json-csv": {
+      "title": "Trabajo con JSON y CSV",
+      "sections": [
+        {
+          "type": "theory",
+          "title": "Leer y Escribir JSON",
+          "content": "Python ofrece el módulo `json` para trabajar con datos estructurados en formato JSON:\n\n• json.dump() para escribir archivos\n• json.load() para leer archivos",
+          "example": "import json\n\ndatos = {\"nombre\": \"Ana\", \"edad\": 30}\n\n# Guardar JSON\nwith open(\"usuario.json\", \"w\") as f:\n    json.dump(datos, f)\n\n# Leer JSON\nwith open(\"usuario.json\", \"r\") as f:\n    cargado = json.load(f)\n    print(cargado)"
+        },
+        {
+          "type": "theory",
+          "title": "Leer y Escribir CSV",
+          "content": "El módulo `csv` permite trabajar con archivos separados por comas. Útil para hojas de cálculo y bases de datos simples.",
+          "example": "import csv\n\n# Escribir CSV\nwith open(\"personas.csv\", \"w\", newline='') as f:\n    writer = csv.writer(f)\n    writer.writerow([\"Nombre\", \"Edad\"])\n    writer.writerow([\"Juan\", 28])\n\n# Leer CSV\nwith open(\"personas.csv\", \"r\") as f:\n    reader = csv.reader(f)\n    for fila in reader:\n        print(fila)"
+        },
+        {
+          "type": "exercise",
+          "title": "Ejercicio: Guardar y cargar datos JSON",
+          "description": "Pide al usuario su nombre y edad. Guarda la información como JSON y luego cárgala e imprímela.",
+          "startingCode": "import json\n\nnombre = input(\"Tu nombre: \")\nedad = int(input(\"Tu edad: \"))\n\nusuario = {\"nombre\": nombre, \"edad\": edad}\n\nwith open(\"datos_usuario.json\", \"w\") as f:\n    json.dump(usuario, f)\n\nwith open(\"datos_usuario.json\", \"r\") as f:\n    cargado = json.load(f)\n    print(f\"Cargado: {cargado}\")",
+          "solution": "import json\n\nnombre = input(\"Tu nombre: \")\nedad = int(input(\"Tu edad: \"))\n\nusuario = {\"nombre\": nombre, \"edad\": edad}\n\nwith open(\"datos_usuario.json\", \"w\") as f:\n    json.dump(usuario, f)\n\nwith open(\"datos_usuario.json\", \"r\") as f:\n    cargado = json.load(f)\n    print(f\"Cargado: {cargado}\")",
+          "validation": "(code) => code.includes('json') and code.includes('dump') and code.includes('load')"
+        }
+      ]
+    },
+    "comprehensions": {
+      "title": "List, Dict y Set Comprehensions",
+      "sections": [
+        {
+          "type": "theory",
+          "title": "List Comprehensions",
+          "content": "Permiten crear listas de forma concisa a partir de iterables.\n\n• Sintaxis: `[expresion for item in iterable if condicion]`\n• Son más rápidas y legibles que los bucles tradicionales",
+          "example": "# Lista de cuadrados\ncuadrados = [x**2 for x in range(10)]\nprint(cuadrados)\n\n# Filtrar pares\npares = [x for x in range(10) if x % 2 == 0]\nprint(pares)"
+        },
+        {
+          "type": "theory",
+          "title": "Dict y Set Comprehensions",
+          "content": "También puedes usar comprehensions para crear diccionarios y sets:\n\n• `{k: v for ...}` para diccionarios\n• `{v for ...}` para sets",
+          "example": "# Diccionario con cuadrados\ncuadrados = {x: x**2 for x in range(5)}\nprint(cuadrados)\n\n# Set de letras únicas\nletras = {letra for letra in \"banana\"}\nprint(letras)  # {'b', 'a', 'n'}"
+        },
+        {
+          "type": "exercise",
+          "title": "Ejercicio: Filtrar y transformar",
+          "description": "Dada una lista de números, crea:\n1. Una lista con sus raíces cuadradas (solo si son mayores a 0)\n2. Un set con los valores únicos multiplicados por 2",
+          "startingCode": "import math\n\nnumeros = [1, 4, 9, -1, 16, 4]\n\n# Lista con raíces cuadradas\nraices = [math.sqrt(n) for n in numeros if n > 0]\n\n# Set con valores únicos multiplicados por 2\ndobles = {n * 2 for n in numeros}\n\nprint(\"Raíces:\", raices)\nprint(\"Dobles únicos:\", dobles)",
+          "solution": "import math\n\nnumeros = [1, 4, 9, -1, 16, 4]\nraices = [math.sqrt(n) for n in numeros if n > 0]\ndobles = {n * 2 for n in numeros}\n\nprint(\"Raíces:\", raices)\nprint(\"Dobles únicos:\", dobles)",
+          "validation": "(code) => code.includes('for') and (code.includes('[') or code.includes('{'))"
+        }
+      ]
+    },
+    "decorators-generators": {
+      "title": "Decoradores y Generadores",
+      "sections": [
+        {
+          "type": "theory",
+          "title": "Funciones Generadoras y yield",
+          "content": "Una función generadora devuelve elementos uno a uno usando `yield`.\n\n• No carga todo en memoria\n• Útil para secuencias grandes o infinitas\n• Cada llamada a `next()` continúa donde se quedó",
+          "example": "def contar_hasta(n):\n    for i in range(1, n + 1):\n        yield i\n\nfor numero in contar_hasta(5):\n    print(numero)"
+        },
+        {
+          "type": "theory",
+          "title": "Decoradores en Python",
+          "content": "Un decorador es una función que recibe otra función y la modifica o amplía sin cambiar su código interno.\n\n• Se usan con @decorador encima de la función\n• Pueden agregar validación, logs, cache, etc.",
+          "example": "def decorador_saludo(func):\n    def wrapper():\n        print(\"Hola desde el decorador\")\n        func()\n    return wrapper\n\n@decorador_saludo\ndef saludar():\n    print(\"¡Hola mundo!\")\n\nsaludar()"
+        },
+        {
+          "type": "exercise",
+          "title": "Ejercicio: Generador de múltiplos y decorador de log",
+          "description": "Crea un generador que devuelva múltiplos de un número hasta un límite. También, crea un decorador que imprima 'Ejecutando...' antes de ejecutar una función.",
+          "startingCode": "# Generador de múltiplos\ndef multiplos(n, limite):\n    for i in range(1, limite + 1):\n        if i % n == 0:\n            yield i\n\n# Decorador de log\ndef log(func):\n    def wrapper(*args, **kwargs):\n        print(\"Ejecutando...\")\n        return func(*args, **kwargs)\n    return wrapper\n\n@log\ndef mostrar():\n    for x in multiplos(3, 20):\n        print(x)\n\nmostrar()",
+          "solution": "def multiplos(n, limite):\n    for i in range(1, limite + 1):\n        if i % n == 0:\n            yield i\n\ndef log(func):\n    def wrapper(*args, **kwargs):\n        print(\"Ejecutando...\")\n        return func(*args, **kwargs)\n    return wrapper\n\n@log\ndef mostrar():\n    for x in multiplos(3, 20):\n        print(x)\n\nmostrar()",
+          "validation": "(code) => code.includes('yield') and code.includes('@log') and code.includes('def wrapper')"
+        }
+      ]
+    },
+    "regex": {
+      "title": "Expresiones Regulares",
+      "sections": [
+        {
+          "type": "theory",
+          "title": "Introducción a las Expresiones Regulares",
+          "content": "El módulo `re` permite buscar y validar patrones en texto.\n• `re.search()`, `re.findall()`, `re.sub()`\n• Útil para validar emails, extraer números, reemplazar texto",
+          "example": "import re\ntexto = \"Mi email es usuario@gmail.com\"\n\npatron = r\"\\w+@\\w+\\.com\"\nresultado = re.search(patron, texto)\nif resultado:\n    print(\"Encontrado:\", resultado.group())"
+        },
+        {
+          "type": "exercise",
+          "title": "Ejercicio: Validar correos electrónicos",
+          "description": "Valida si una cadena contiene un email válido usando expresiones regulares.",
+          "startingCode": "import re\ntexto = input(\"Ingresa un texto con correo: \")\n\npatron = r\"[\\w._%+-]+@[\\w.-]+\\.[a-zA-Z]{2,}\"\ncoincidencias = re.findall(patron, texto)\n\nprint(\"Correos encontrados:\", coincidencias)",
+          "solution": "import re\ntexto = input(\"Ingresa un texto con correo: \")\n\npatron = r\"[\\w._%+-]+@[\\w.-]+\\.[a-zA-Z]{2,}\"\ncoincidencias = re.findall(patron, texto)\n\nprint(\"Correos encontrados:\", coincidencias)",
+          "validation": "(code) => code.includes('re.') and code.includes('findall')"
+        }
+      ]
+    },
+    "scraping": {
+      "title": "Web Scraping con Python",
+      "sections": [
+        {
+          "type": "theory",
+          "title": "Uso de requests y BeautifulSoup",
+          "content": "Con `requests` puedes obtener el contenido de una página web y con `BeautifulSoup` puedes analizar su HTML.\n\n• Ideal para extraer datos públicos de páginas",
+          "example": "import requests\nfrom bs4 import BeautifulSoup\n\nurl = \"https://www.python.org\"\nres = requests.get(url)\nsoup = BeautifulSoup(res.text, \"html.parser\")\n\n# Extraer títulos\ntitulos = soup.find_all(\"h2\")\nfor t in titulos:\n    print(t.text)"
+        }
+      ]
+    },
+    "apis": {
+      "title": "Consumir y Construir APIs REST",
+      "sections": [
+        {
+          "type": "theory",
+          "title": "Consumir APIs con requests",
+          "content": "Puedes usar `requests.get()` para obtener datos de APIs públicas en formato JSON.",
+          "example": "import requests\n\nrespuesta = requests.get(\"https://pokeapi.co/api/v2/pokemon/ditto\")\ndata = respuesta.json()\nprint(\"Nombre:\", data[\"name\"])\nprint(\"Peso:\", data[\"weight\"])"
+        }
+      ]
+    },
+    "databases": {
+      "title": "Bases de Datos con SQLite y SQLAlchemy",
+      "sections": [
+        {
+          "type": "theory",
+          "title": "Uso de SQLite con sqlite3",
+          "content": "Puedes usar `sqlite3` para crear bases de datos locales.\n• Crear tablas, insertar, consultar y actualizar datos",
+          "example": "import sqlite3\n\nconn = sqlite3.connect(\"usuarios.db\")\ncursor = conn.cursor()\ncursor.execute(\"CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY, nombre TEXT)\")\ncursor.execute(\"INSERT INTO usuarios (nombre) VALUES (?)\", (\"Ana\",))\nconn.commit()\nfor fila in cursor.execute(\"SELECT * FROM usuarios\"):\n    print(fila)\nconn.close()"
+        }
+      ]
+    },
+    "projects": {
+      "title": "Proyectos Prácticos Finales",
+      "sections": [
+        {
+          "type": "exercise",
+          "title": "Proyecto: Gestor de tareas en consola",
+          "description": "Crea una app en consola donde el usuario pueda:\n• Agregar tareas\n• Listarlas\n• Marcar como completadas\n• Guardarlas en un archivo",
+          "startingCode": "tareas = []\n\nwhile True:\n    opcion = input(\"[1] Agregar [2] Ver [3] Salir: \")\n    if opcion == \"1\":\n        t = input(\"Nueva tarea: \")\n        tareas.append({\"texto\": t, \"hecho\": False})\n    elif opcion == \"2\":\n        for i, t in enumerate(tareas):\n            estado = \"✔\" if t[\"hecho\"] else \"✗\"\n            print(f\"{i+1}. {estado} {t['texto']}\")\n    elif opcion == \"3\":\n        break"
         }
       ]
     }
