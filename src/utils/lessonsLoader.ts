@@ -267,6 +267,30 @@ export const generateLearningPathLessons = (): LearningPathLesson[] => {
       color: "from-pink-400 to-pink-600",
       category: "Ecosistema Python",
     },
+    "web-scraping": {
+      description: "Extrae datos de sitios web de forma automática",
+      duration: "45 min",
+      difficulty: "Avanzado",
+      icon: "Globe",
+      color: "from-emerald-400 to-emerald-600",
+      category: "Web y APIs",
+    },
+    "apis-rest": {
+      description: "Consume y maneja APIs REST con Python",
+      duration: "55 min",
+      difficulty: "Avanzado",
+      icon: "Network",
+      color: "from-blue-400 to-blue-600",
+      category: "Web y APIs",
+    },
+    "manejo-archivos": {
+      description: "Procesamiento avanzado de archivos CSV, JSON y más",
+      duration: "50 min",
+      difficulty: "Avanzado",
+      icon: "Files",
+      color: "from-amber-400 to-amber-600",
+      category: "Procesamiento de Datos",
+    },
   };
 
   return LESSONS_ORDER.map((lessonId) => {
