@@ -1,0 +1,1739 @@
+{
+  "coursePlan": {
+    "title": "Python Completo: De Principiante a Experto",
+    "description": "Un curso completo de Python que te llevará desde los conceptos básicos hasta un nivel profesional",
+    "totalLessons": 95,
+    "estimatedTime": "120-150 horas",
+    "categories": [
+      "Fundamentos Básicos",
+      "Estructuras de Datos",
+      "Funciones y Modularidad",
+      "Programación Orientada a Objetos",
+      "Manejo de Archivos y Datos",
+      "Web Development",
+      "Data Science y Analytics",
+      "Automatización y Scripts",
+      "Testing y Debugging",
+      "Proyectos Finales"
+    ]
+  },
+  "lessons": {
+    "fundamentals": {
+      "category": "Fundamentos Básicos",
+      "lessons": [
+        {
+          "id": "python-intro",
+          "title": "Introducción a Python",
+          "description": "Historia, filosofía y configuración del entorno",
+          "duration": "20 min",
+          "difficulty": "Principiante",
+          "objectives": [
+            "Entender qué es Python y por qué es popular",
+            "Configurar el entorno de desarrollo",
+            "Ejecutar tu primer programa en Python"
+          ],
+          "topics": [
+            "Historia de Python",
+            "Filosofía Zen of Python",
+            "Instalación y configuración",
+            "IDLE vs IDEs",
+            "Primer programa: Hola Mundo"
+          ]
+        },
+        {
+          "id": "variables-basic",
+          "title": "Variables y Asignación",
+          "description": "Aprende a crear y manipular variables",
+          "duration": "25 min",
+          "difficulty": "Principiante",
+          "objectives": [
+            "Crear variables con diferentes tipos de datos",
+            "Entender las reglas de nomenclatura",
+            "Realizar asignaciones múltiples"
+          ],
+          "topics": [
+            "Declaración de variables",
+            "Tipos de datos básicos",
+            "Reglas de nomenclatura",
+            "Asignación múltiple",
+            "Palabras reservadas"
+          ]
+        },
+        {
+          "id": "data-types-basic",
+          "title": "Tipos de Datos Primitivos",
+          "description": "Numbers, strings, booleans y None",
+          "duration": "30 min",
+          "difficulty": "Principiante",
+          "objectives": [
+            "Dominar int, float, str, bool",
+            "Realizar conversiones entre tipos",
+            "Entender el tipo None"
+          ],
+          "topics": [
+            "Enteros (int)",
+            "Números flotantes (float)",
+            "Cadenas de texto (str)",
+            "Booleanos (bool)",
+            "None type",
+            "Conversiones de tipos"
+          ]
+        },
+        {
+          "id": "input-output",
+          "title": "Entrada y Salida de Datos",
+          "description": "input(), print() y formateo de strings",
+          "duration": "35 min",
+          "difficulty": "Principiante",
+          "objectives": [
+            "Obtener datos del usuario",
+            "Mostrar información formateada",
+            "Dominar f-strings y format()"
+          ],
+          "topics": [
+            "Función input()",
+            "Función print() avanzada",
+            "F-strings",
+            "Método format()",
+            "Formateo de números"
+          ]
+        },
+        {
+          "id": "operators-arithmetic",
+          "title": "Operadores Aritméticos",
+          "description": "Matemáticas en Python",
+          "duration": "25 min",
+          "difficulty": "Principiante",
+          "objectives": [
+            "Realizar operaciones matemáticas",
+            "Entender precedencia de operadores",
+            "Usar operadores de asignación compuesta"
+          ],
+          "topics": [
+            "Operadores básicos (+, -, *, /)",
+            "División entera (//)",
+            "Módulo (%)",
+            "Exponenciación (**)",
+            "Precedencia",
+            "Operadores de asignación (+=, -=, etc.)"
+          ]
+        },
+        {
+          "id": "operators-comparison",
+          "title": "Operadores de Comparación",
+          "description": "Comparar valores y expresiones",
+          "duration": "20 min",
+          "difficulty": "Principiante",
+          "objectives": [
+            "Comparar números y strings",
+            "Entender igualdad vs identidad",
+            "Usar comparaciones en expresiones"
+          ],
+          "topics": [
+            "Operadores de comparación",
+            "Igualdad (==) vs identidad (is)",
+            "Comparación de strings",
+            "Comparaciones encadenadas"
+          ]
+        },
+        {
+          "id": "operators-logical",
+          "title": "Operadores Lógicos",
+          "description": "and, or, not y expresiones booleanas",
+          "duration": "25 min",
+          "difficulty": "Principiante",
+          "objectives": [
+            "Combinar condiciones lógicas",
+            "Entender cortocircuito",
+            "Usar operadores de pertenencia"
+          ],
+          "topics": [
+            "Operadores and, or, not",
+            "Cortocircuito en evaluación",
+            "Operadores in y not in",
+            "Truthiness en Python"
+          ]
+        },
+        {
+          "id": "conditionals-basic",
+          "title": "Estructuras Condicionales",
+          "description": "if, elif, else y toma de decisiones",
+          "duration": "35 min",
+          "difficulty": "Principiante",
+          "objectives": [
+            "Crear programas que tomen decisiones",
+            "Usar múltiples condiciones",
+            "Anidar condicionales"
+          ],
+          "topics": [
+            "Estructura if-elif-else",
+            "Condicionales anidados",
+            "Expresiones ternarias",
+            "Múltiples condiciones"
+          ]
+        },
+        {
+          "id": "loops-for",
+          "title": "Bucles For",
+          "description": "Iteración con for y range()",
+          "duration": "40 min",
+          "difficulty": "Principiante",
+          "objectives": [
+            "Iterar sobre secuencias",
+            "Usar range() efectivamente",
+            "Aplicar enumerate() y zip()"
+          ],
+          "topics": [
+            "Bucle for básico",
+            "Función range()",
+            "Iterar sobre strings",
+            "enumerate()",
+            "zip()",
+            "Bucles anidados"
+          ]
+        },
+        {
+          "id": "loops-while",
+          "title": "Bucles While",
+          "description": "Iteración condicional y control de flujo",
+          "duration": "35 min",
+          "difficulty": "Principiante",
+          "objectives": [
+            "Crear bucles condicionales",
+            "Evitar bucles infinitos",
+            "Usar break y continue"
+          ],
+          "topics": [
+            "Bucle while",
+            "Condiciones de parada",
+            "break y continue",
+            "else en bucles",
+            "Bucles infinitos y cómo evitarlos"
+          ]
+        }
+      ]
+    },
+    "strings": {
+      "category": "Manejo de Strings",
+      "lessons": [
+        {
+          "id": "strings-basic",
+          "title": "Strings y Caracteres",
+          "description": "Creación y manipulación básica de strings",
+          "duration": "30 min",
+          "difficulty": "Principiante",
+          "objectives": [
+            "Crear strings con diferentes comillas",
+            "Escapar caracteres especiales",
+            "Concatenar y repetir strings"
+          ],
+          "topics": [
+            "Comillas simples y dobles",
+            "Strings multilínea",
+            "Caracteres de escape",
+            "Raw strings",
+            "Concatenación y repetición"
+          ]
+        },
+        {
+          "id": "strings-methods",
+          "title": "Métodos de String",
+          "description": "Métodos útiles para manipular texto",
+          "duration": "45 min",
+          "difficulty": "Principiante",
+          "objectives": [
+            "Usar métodos de transformación",
+            "Buscar y reemplazar texto",
+            "Validar contenido de strings"
+          ],
+          "topics": [
+            "upper(), lower(), title(), capitalize()",
+            "strip(), lstrip(), rstrip()",
+            "find(), index(), count()",
+            "replace(), split(), join()",
+            "startswith(), endswith()",
+            "isdigit(), isalpha(), isalnum()"
+          ]
+        },
+        {
+          "id": "strings-slicing",
+          "title": "Slicing de Strings",
+          "description": "Extraer partes de strings con precisión",
+          "duration": "30 min",
+          "difficulty": "Principiante",
+          "objectives": [
+            "Dominar la sintaxis de slicing",
+            "Usar índices negativos",
+            "Crear substrings complejos"
+          ],
+          "topics": [
+            "Sintaxis básica [start:end:step]",
+            "Índices negativos",
+            "Slicing con pasos",
+            "Reversión de strings",
+            "Casos extremos"
+          ]
+        },
+        {
+          "id": "strings-formatting",
+          "title": "Formateo Avanzado de Strings",
+          "description": "F-strings, format() y técnicas avanzadas",
+          "duration": "40 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Dominar f-strings completamente",
+            "Usar format() con especificadores",
+            "Formatear números y fechas"
+          ],
+          "topics": [
+            "F-strings avanzados",
+            "Método format() completo",
+            "Especificadores de formato",
+            "Alineación y padding",
+            "Formateo de números",
+            "Template strings"
+          ]
+        },
+        {
+          "id": "regex-intro",
+          "title": "Expresiones Regulares Básicas",
+          "description": "Introducción a regex para búsqueda de patrones",
+          "duration": "50 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Entender qué son las regex",
+            "Usar el módulo re",
+            "Crear patrones básicos"
+          ],
+          "topics": [
+            "Introducción a regex",
+            "Módulo re",
+            "Metacaracteres básicos",
+            "search(), match(), findall()",
+            "Grupos y captura",
+            "Sustitución con sub()"
+          ]
+        }
+      ]
+    },
+    "data-structures": {
+      "category": "Estructuras de Datos",
+      "lessons": [
+        {
+          "id": "lists-basic",
+          "title": "Listas: Fundamentos",
+          "description": "Crear y manipular listas en Python",
+          "duration": "35 min",
+          "difficulty": "Principiante",
+          "objectives": [
+            "Crear listas de diferentes tipos",
+            "Acceder y modificar elementos",
+            "Entender mutabilidad"
+          ],
+          "topics": [
+            "Creación de listas",
+            "Acceso por índice",
+            "Slicing en listas",
+            "Modificación de elementos",
+            "Listas anidadas"
+          ]
+        },
+        {
+          "id": "lists-methods",
+          "title": "Métodos de Listas",
+          "description": "Métodos útiles para manipular listas",
+          "duration": "40 min",
+          "difficulty": "Principiante",
+          "objectives": [
+            "Agregar y remover elementos",
+            "Ordenar y buscar en listas",
+            "Copiar listas correctamente"
+          ],
+          "topics": [
+            "append(), insert(), extend()",
+            "remove(), pop(), clear()",
+            "index(), count(), sort()",
+            "reverse(), copy()",
+            "Shallow vs deep copy"
+          ]
+        },
+        {
+          "id": "tuples",
+          "title": "Tuplas",
+          "description": "Secuencias inmutables y sus usos",
+          "duration": "30 min",
+          "difficulty": "Principiante",
+          "objectives": [
+            "Crear y usar tuplas",
+            "Entender inmutabilidad",
+            "Desempaquetar tuplas"
+          ],
+          "topics": [
+            "Creación de tuplas",
+            "Inmutabilidad",
+            "Acceso y slicing",
+            "Desempaquetado",
+            "Tuplas como claves de dict"
+          ]
+        },
+        {
+          "id": "sets",
+          "title": "Conjuntos (Sets)",
+          "description": "Colecciones únicas y operaciones de conjunto",
+          "duration": "35 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Crear sets y frozensets",
+            "Realizar operaciones de conjunto",
+            "Eliminar duplicados"
+          ],
+          "topics": [
+            "Creación de sets",
+            "Operaciones básicas",
+            "Unión, intersección, diferencia",
+            "Métodos de sets",
+            "frozensets",
+            "Aplicaciones prácticas"
+          ]
+        },
+        {
+          "id": "dictionaries-basic",
+          "title": "Diccionarios: Fundamentos",
+          "description": "Estructuras clave-valor en Python",
+          "duration": "40 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Crear y manipular diccionarios",
+            "Acceder a valores de forma segura",
+            "Iterar sobre diccionarios"
+          ],
+          "topics": [
+            "Creación de diccionarios",
+            "Acceso y modificación",
+            "Métodos keys(), values(), items()",
+            "get() y setdefault()",
+            "Iteración",
+            "Diccionarios anidados"
+          ]
+        },
+        {
+          "id": "dictionaries-advanced",
+          "title": "Diccionarios Avanzados",
+          "description": "Técnicas avanzadas con diccionarios",
+          "duration": "35 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Usar defaultdict y Counter",
+            "Mergear diccionarios",
+            "Crear diccionarios complejos"
+          ],
+          "topics": [
+            "defaultdict",
+            "Counter",
+            "OrderedDict",
+            "Mergear diccionarios",
+            "Dictionary comprehensions",
+            "Casos de uso avanzados"
+          ]
+        },
+        {
+          "id": "comprehensions",
+          "title": "List, Dict y Set Comprehensions",
+          "description": "Crear estructuras de datos de forma concisa",
+          "duration": "45 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Crear comprehensions básicas",
+            "Usar condiciones en comprehensions",
+            "Crear comprehensions anidadas"
+          ],
+          "topics": [
+            "List comprehensions",
+            "Dict comprehensions",
+            "Set comprehensions",
+            "Comprehensions con condiciones",
+            "Comprehensions anidadas",
+            "Performance vs legibilidad"
+          ]
+        }
+      ]
+    },
+    "functions": {
+      "category": "Funciones y Modularidad",
+      "lessons": [
+        {
+          "id": "functions-basic",
+          "title": "Introducción a Funciones",
+          "description": "Definir y llamar funciones básicas",
+          "duration": "35 min",
+          "difficulty": "Principiante",
+          "objectives": [
+            "Definir funciones simples",
+            "Usar parámetros y argumentos",
+            "Retornar valores"
+          ],
+          "topics": [
+            "Definición con def",
+            "Parámetros y argumentos",
+            "return statement",
+            "Documentación con docstrings",
+            "Alcance local"
+          ]
+        },
+        {
+          "id": "functions-parameters",
+          "title": "Parámetros Avanzados",
+          "description": "Parámetros por defecto, *args y **kwargs",
+          "duration": "45 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Usar parámetros por defecto",
+            "Entender *args y **kwargs",
+            "Crear funciones flexibles"
+          ],
+          "topics": [
+            "Parámetros por defecto",
+            "*args (argumentos variables)",
+            "**kwargs (argumentos con nombre)",
+            "Keyword-only arguments",
+            "Positional-only arguments",
+            "Orden de parámetros"
+          ]
+        },
+        {
+          "id": "scope-variables",
+          "title": "Scope y Variables",
+          "description": "Local, global y nonlocal scope",
+          "duration": "40 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Entender diferentes scopes",
+            "Usar global y nonlocal",
+            "Evitar problemas de scope"
+          ],
+          "topics": [
+            "Local scope",
+            "Global scope",
+            "Enclosed scope",
+            "Built-in scope",
+            "global keyword",
+            "nonlocal keyword",
+            "LEGB rule"
+          ]
+        },
+        {
+          "id": "lambda-functions",
+          "title": "Funciones Lambda",
+          "description": "Funciones anónimas y su uso",
+          "duration": "30 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Crear funciones lambda",
+            "Usar con map(), filter(), sort()",
+            "Entender limitaciones"
+          ],
+          "topics": [
+            "Sintaxis lambda",
+            "Uso con map()",
+            "Uso con filter()",
+            "Uso con sorted()",
+            "Limitaciones de lambda",
+            "Cuándo usar lambda vs def"
+          ]
+        },
+        {
+          "id": "higher-order-functions",
+          "title": "Funciones de Orden Superior",
+          "description": "map(), filter(), reduce() y más",
+          "duration": "40 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Usar funciones como argumentos",
+            "Aplicar programación funcional",
+            "Optimizar código con HOF"
+          ],
+          "topics": [
+            "Funciones como objetos",
+            "map() función",
+            "filter() función",
+            "reduce() de functools",
+            "Retornar funciones",
+            "Closures"
+          ]
+        },
+        {
+          "id": "decorators-basic",
+          "title": "Decoradores Básicos",
+          "description": "Introducción a los decoradores",
+          "duration": "50 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Entender qué son los decoradores",
+            "Crear decoradores simples",
+            "Usar decoradores builtin"
+          ],
+          "topics": [
+            "Concepto de decoradores",
+            "Decoradores simples",
+            "@property",
+            "@staticmethod",
+            "@classmethod",
+            "functools.wraps"
+          ]
+        },
+        {
+          "id": "decorators-advanced",
+          "title": "Decoradores Avanzados",
+          "description": "Decoradores con parámetros y casos complejos",
+          "duration": "45 min",
+          "difficulty": "Avanzado",
+          "objectives": [
+            "Crear decoradores parametrizados",
+            "Decorar clases",
+            "Crear decoradores reutilizables"
+          ],
+          "topics": [
+            "Decoradores con parámetros",
+            "Decoradores de clases",
+            "Múltiples decoradores",
+            "Preservar metadata",
+            "Casos de uso avanzados"
+          ]
+        },
+        {
+          "id": "generators",
+          "title": "Generadores",
+          "description": "yield, iteradores y generadores",
+          "duration": "50 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Crear generadores con yield",
+            "Entender lazy evaluation",
+            "Usar expresiones generadoras"
+          ],
+          "topics": [
+            "yield keyword",
+            "Generator functions",
+            "Generator expressions",
+            "next() y iter()",
+            "Ventajas de memoria",
+            "Pipelines de generadores"
+          ]
+        }
+      ]
+    },
+    "oop": {
+      "category": "Programación Orientada a Objetos",
+      "lessons": [
+        {
+          "id": "classes-basic",
+          "title": "Introducción a Clases",
+          "description": "Conceptos básicos de POO en Python",
+          "duration": "45 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Definir clases y crear objetos",
+            "Usar atributos y métodos",
+            "Entender self"
+          ],
+          "topics": [
+            "Definición de clases",
+            "Atributos de instancia",
+            "Métodos de instancia",
+            "El parámetro self",
+            "__init__ constructor",
+            "Crear objetos"
+          ]
+        },
+        {
+          "id": "class-attributes",
+          "title": "Atributos de Clase",
+          "description": "Atributos compartidos y de instancia",
+          "duration": "35 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Distinguir atributos de clase vs instancia",
+            "Usar variables de clase",
+            "Controlar acceso a atributos"
+          ],
+          "topics": [
+            "Atributos de clase",
+            "Atributos de instancia",
+            "Variables compartidas",
+            "Modificación de atributos",
+            "hasattr(), getattr(), setattr()"
+          ]
+        },
+        {
+          "id": "methods-types",
+          "title": "Tipos de Métodos",
+          "description": "Instance, class y static methods",
+          "duration": "40 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Usar métodos de instancia",
+            "Crear métodos de clase",
+            "Implementar métodos estáticos"
+          ],
+          "topics": [
+            "Métodos de instancia",
+            "@classmethod",
+            "@staticmethod",
+            "Cuándo usar cada tipo",
+            "cls vs self",
+            "Métodos como factory"
+          ]
+        },
+        {
+          "id": "inheritance",
+          "title": "Herencia",
+          "description": "Herencia simple y múltiple",
+          "duration": "50 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Crear jerarquías de clases",
+            "Sobrescribir métodos",
+            "Usar super()"
+          ],
+          "topics": [
+            "Herencia simple",
+            "Sobrescribir métodos",
+            "super() función",
+            "Herencia múltiple",
+            "MRO (Method Resolution Order)",
+            "isinstance() y issubclass()"
+          ]
+        },
+        {
+          "id": "polymorphism",
+          "title": "Polimorfismo",
+          "description": "Duck typing y polimorfismo en Python",
+          "duration": "35 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Implementar polimorfismo",
+            "Usar duck typing",
+            "Crear interfaces informales"
+          ],
+          "topics": [
+            "Concepto de polimorfismo",
+            "Duck typing",
+            "Métodos abstractos",
+            "ABC (Abstract Base Classes)",
+            "Protocolos y typing"
+          ]
+        },
+        {
+          "id": "encapsulation",
+          "title": "Encapsulación",
+          "description": "Privacidad y encapsulación en Python",
+          "duration": "40 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Controlar acceso a atributos",
+            "Usar properties",
+            "Implementar encapsulación"
+          ],
+          "topics": [
+            "Convenciones de privacidad",
+            "Name mangling",
+            "@property decorator",
+            "Setters y getters",
+            "Atributos privados vs protegidos"
+          ]
+        },
+        {
+          "id": "magic-methods",
+          "title": "Métodos Mágicos",
+          "description": "Dunder methods para personalizar clases",
+          "duration": "55 min",
+          "difficulty": "Avanzado",
+          "objectives": [
+            "Usar métodos mágicos principales",
+            "Sobrecarga de operadores",
+            "Crear clases más pythónicas"
+          ],
+          "topics": [
+            "__str__ y __repr__",
+            "__len__ y __bool__",
+            "__eq__ y comparación",
+            "Operadores aritméticos",
+            "__getitem__ y __setitem__",
+            "__call__ y otros"
+          ]
+        },
+        {
+          "id": "dataclasses",
+          "title": "Dataclasses y NamedTuple",
+          "description": "Estructuras de datos modernas",
+          "duration": "40 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Usar @dataclass",
+            "Crear NamedTuples",
+            "Comparar enfoques"
+          ],
+          "topics": [
+            "@dataclass decorator",
+            "Field customization",
+            "NamedTuple",
+            "TypedDict",
+            "Cuándo usar cada uno",
+            "Performance considerations"
+          ]
+        }
+      ]
+    },
+    "modules": {
+      "category": "Módulos y Paquetes",
+      "lessons": [
+        {
+          "id": "modules-basic",
+          "title": "Módulos Básicos",
+          "description": "Crear e importar módulos",
+          "duration": "35 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Crear módulos propios",
+            "Importar de diferentes formas",
+            "Organizar código en módulos"
+          ],
+          "topics": [
+            "Crear módulos .py",
+            "import statement",
+            "from...import",
+            "import...as",
+            "__name__ == '__main__'",
+            "Rutas de módulos"
+          ]
+        },
+        {
+          "id": "packages",
+          "title": "Paquetes",
+          "description": "Organizar módulos en paquetes",
+          "duration": "40 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Crear paquetes Python",
+            "Usar __init__.py",
+            "Importaciones relativas"
+          ],
+          "topics": [
+            "Estructura de paquetes",
+            "__init__.py",
+            "Subpaquetes",
+            "Importaciones relativas",
+            "__all__ variable",
+            "Namespace packages"
+          ]
+        },
+        {
+          "id": "standard-library",
+          "title": "Librería Estándar",
+          "description": "Módulos útiles de la librería estándar",
+          "duration": "60 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Usar módulos de la stdlib",
+            "Explorar categorías principales",
+            "Resolver problemas comunes"
+          ],
+          "topics": [
+            "os y os.path",
+            "sys",
+            "datetime",
+            "collections",
+            "itertools",
+            "math y random",
+            "json",
+            "pathlib"
+          ]
+        },
+        {
+          "id": "pip-virtualenv",
+          "title": "Pip y Entornos Virtuales",
+          "description": "Gestión de dependencias y entornos",
+          "duration": "45 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Instalar paquetes con pip",
+            "Crear entornos virtuales",
+            "Gestionar dependencias"
+          ],
+          "topics": [
+            "pip install, upgrade, uninstall",
+            "requirements.txt",
+            "venv y virtualenv",
+            "Activar/desactivar entornos",
+            "pipenv",
+            "Buenas prácticas"
+          ]
+        }
+      ]
+    },
+    "file-handling": {
+      "category": "Manejo de Archivos y Datos",
+      "lessons": [
+        {
+          "id": "files-basic",
+          "title": "Archivos de Texto",
+          "description": "Leer y escribir archivos de texto",
+          "duration": "40 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Abrir y cerrar archivos",
+            "Leer contenido completo y línea por línea",
+            "Escribir en archivos"
+          ],
+          "topics": [
+            "open() función",
+            "Modos de apertura",
+            "read(), readline(), readlines()",
+            "write() y writelines()",
+            "with statement",
+            "Encoding y UTF-8"
+          ]
+        },
+        {
+          "id": "files-advanced",
+          "title": "Manejo Avanzado de Archivos",
+          "description": "Trabajar con diferentes tipos de archivos",
+          "duration": "45 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Trabajar con archivos binarios",
+            "Usar pathlib",
+            "Manejar errores de archivos"
+          ],
+          "topics": [
+            "Archivos binarios",
+            "pathlib.Path",
+            "os.path vs pathlib",
+            "Verificar existencia",
+            "Permisos de archivos",
+            "Manejo de errores"
+          ]
+        },
+        {
+          "id": "csv-files",
+          "title": "Archivos CSV",
+          "description": "Procesar datos tabulares",
+          "duration": "35 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Leer y escribir CSV",
+            "Usar csv.DictReader",
+            "Manejar diferentes delimitadores"
+          ],
+          "topics": [
+            "Módulo csv",
+            "csv.reader y csv.writer",
+            "DictReader y DictWriter",
+            "Delimitadores personalizados",
+            "Manejo de headers",
+            "Escapar caracteres especiales"
+          ]
+        },
+        {
+          "id": "json-files",
+          "title": "Archivos JSON",
+          "description": "Trabajar con datos JSON",
+          "duration": "30 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Serializar y deserializar JSON",
+            "Manejar tipos de datos complejos",
+            "Validar datos JSON"
+          ],
+          "topics": [
+            "json.loads() y json.dumps()",
+            "json.load() y json.dump()",
+            "Serialización personalizada",
+            "Manejo de fechas",
+            "JSON schema básico",
+            "Errores comunes"
+          ]
+        },
+        {
+          "id": "databases-intro",
+          "title": "Introducción a Bases de Datos",
+          "description": "SQLite y operaciones básicas",
+          "duration": "50 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Conectar a SQLite",
+            "Ejecutar consultas SQL",
+            "Manejar resultados"
+          ],
+          "topics": [
+            "sqlite3 módulo",
+            "Conexiones y cursores",
+            "CREATE, INSERT, SELECT",
+            "UPDATE y DELETE",
+            "Parámetros seguros",
+            "Transacciones básicas"
+          ]
+        }
+      ]
+    },
+    "error-handling": {
+      "category": "Manejo de Errores",
+      "lessons": [
+        {
+          "id": "exceptions-basic",
+          "title": "Excepciones Básicas",
+          "description": "try, except, finally",
+          "duration": "40 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Capturar excepciones",
+            "Usar finally",
+            "Manejar múltiples excepciones"
+          ],
+          "topics": [
+            "try-except syntax",
+            "Tipos de excepciones",
+            "except múltiples",
+            "finally clause",
+            "else clause",
+            "Buenas prácticas"
+          ]
+        },
+        {
+          "id": "custom-exceptions",
+          "title": "Excepciones Personalizadas",
+          "description": "Crear y lanzar excepciones propias",
+          "duration": "35 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Crear excepciones personalizadas",
+            "Lanzar excepciones con raise",
+            "Diseñar jerarquías de excepciones"
+          ],
+          "topics": [
+            "raise statement",
+            "Clases de excepción",
+            "Herencia de Exception",
+            "Información adicional",
+            "re-raising exceptions",
+            "Exception chaining"
+          ]
+        },
+        {
+          "id": "debugging-basic",
+          "title": "Debugging Básico",
+          "description": "Técnicas para encontrar y corregir errores",
+          "duration": "45 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Usar print debugging",
+            "Leer tracebacks",
+            "Usar herramientas básicas"
+          ],
+          "topics": [
+            "Reading tracebacks",
+            "Print debugging",
+            "assert statements",
+            "logging básico",
+            "IDE debugging",
+            "pdb module"
+          ]
+        }
+      ]
+    },
+    "testing": {
+      "category": "Testing",
+      "lessons": [
+        {
+          "id": "unittest-basic",
+          "title": "Unit Testing",
+          "description": "Escribir tests con unittest",
+          "duration": "50 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Escribir tests unitarios",
+            "Usar assertions",
+            "Organizar tests"
+          ],
+          "topics": [
+            "unittest framework",
+            "TestCase class",
+            "setUp y tearDown",
+            "Assertions methods",
+            "Test discovery",
+            "Mocking básico"
+          ]
+        },
+        {
+          "id": "pytest-intro",
+          "title": "Pytest Básico",
+          "description": "Testing moderno con pytest",
+          "duration": "45 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Usar pytest",
+            "Escribir tests simples",
+            "Usar fixtures básicas"
+          ],
+          "topics": [
+            "pytest setup",
+            "Test functions",
+            "Fixtures",
+            "Parametrized tests",
+            "pytest.mark",
+            "Coverage básico"
+          ]
+        }
+      ]
+    },
+    "web-dev": {
+      "category": "Desarrollo Web",
+      "lessons": [
+        {
+          "id": "http-requests",
+          "title": "Requests HTTP",
+          "description": "Hacer peticiones HTTP con requests",
+          "duration": "40 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Hacer peticiones GET y POST",
+            "Manejar respuestas",
+            "Trabajar con APIs"
+          ],
+          "topics": [
+            "requests library",
+            "GET y POST requests",
+            "Headers y parámetros",
+            "JSON responses",
+            "Authentication básica",
+            "Error handling"
+          ]
+        },
+        {
+          "id": "web-scraping",
+          "title": "Web Scraping",
+          "description": "Extraer datos de páginas web",
+          "duration": "50 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Parsear HTML con BeautifulSoup",
+            "Extraer información específica",
+            "Manejar formularios"
+          ],
+          "topics": [
+            "BeautifulSoup4",
+            "Parsing HTML",
+            "CSS selectors",
+            "Extraer texto e imágenes",
+            "Sessions y cookies",
+            "Ética del scraping"
+          ]
+        },
+        {
+          "id": "flask-intro",
+          "title": "Flask Básico",
+          "description": "Crear aplicaciones web con Flask",
+          "duration": "60 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Crear aplicación Flask básica",
+            "Definir rutas",
+            "Usar templates"
+          ],
+          "topics": [
+            "Flask setup",
+            "Rutas y vistas",
+            "Templates con Jinja2",
+            "Formularios",
+            "Static files",
+            "Debug mode"
+          ]
+        },
+        {
+          "id": "apis-rest",
+          "title": "APIs REST",
+          "description": "Crear APIs REST con Flask",
+          "duration": "55 min",
+          "difficulty": "Avanzado",
+          "objectives": [
+            "Diseñar APIs REST",
+            "Manejar JSON",
+            "Implementar CRUD"
+          ],
+          "topics": [
+            "REST principles",
+            "JSON APIs",
+            "HTTP methods",
+            "Status codes",
+            "API documentation",
+            "Authentication"
+          ]
+        }
+      ]
+    },
+    "data-science": {
+      "category": "Data Science",
+      "lessons": [
+        {
+          "id": "numpy-intro",
+          "title": "NumPy Básico",
+          "description": "Computación numérica con NumPy",
+          "duration": "50 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Crear arrays NumPy",
+            "Operaciones básicas",
+            "Indexing y slicing"
+          ],
+          "topics": [
+            "Arrays NumPy",
+            "Shapes y dtypes",
+            "Array creation",
+            "Mathematical operations",
+            "Broadcasting",
+            "Indexing avanzado"
+          ]
+        },
+        {
+          "id": "pandas-intro",
+          "title": "Pandas Básico",
+          "description": "Análisis de datos con Pandas",
+          "duration": "60 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Trabajar con DataFrames",
+            "Leer y escribir datos",
+            "Filtrar y agrupar"
+          ],
+          "topics": [
+            "Series y DataFrames",
+            "Reading data",
+            "Data selection",
+            "Filtering",
+            "Grouping",
+            "Basic statistics"
+          ]
+        },
+        {
+          "id": "matplotlib-intro",
+          "title": "Matplotlib Básico",
+          "description": "Visualización de datos",
+          "duration": "45 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Crear gráficos básicos",
+            "Personalizar visualizaciones",
+            "Guardar figuras"
+          ],
+          "topics": [
+            "Plot types",
+            "Figure y axes",
+            "Customization",
+            "Labels y legends",
+            "Subplots",
+            "Saving figures"
+          ]
+        }
+      ]
+    },
+    "automation": {
+      "category": "Automatización",
+      "lessons": [
+        {
+          "id": "file-automation",
+          "title": "Automatización de Archivos",
+          "description": "Automatizar tareas con archivos",
+          "duration": "45 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Organizar archivos automáticamente",
+            "Procesar múltiples archivos",
+            "Crear scripts útiles"
+          ],
+          "topics": [
+            "os.walk()",
+            "glob patterns",
+            "File operations",
+            "Batch processing",
+            "Directory organization",
+            "Scheduled tasks"
+          ]
+        },
+        {
+          "id": "email-automation",
+          "title": "Automatización de Email",
+          "description": "Enviar emails automáticamente",
+          "duration": "40 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Enviar emails con Python",
+            "Crear plantillas",
+            "Adjuntar archivos"
+          ],
+          "topics": [
+            "smtplib module",
+            "Email composition",
+            "Attachments",
+            "HTML emails",
+            "Email templates",
+            "Security considerations"
+          ]
+        },
+        {
+          "id": "gui-tkinter",
+          "title": "GUIs con Tkinter",
+          "description": "Crear interfaces gráficas",
+          "duration": "55 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Crear ventanas básicas",
+            "Usar widgets comunes",
+            "Manejar eventos"
+          ],
+          "topics": [
+            "Tkinter basics",
+            "Widgets (Button, Label, Entry)",
+            "Layout managers",
+            "Event handling",
+            "Menus",
+            "Basic styling"
+          ]
+        }
+      ]
+    },
+    "advanced": {
+      "category": "Temas Avanzados",
+      "lessons": [
+        {
+          "id": "concurrency-threading",
+          "title": "Threading",
+          "description": "Programación concurrente con threads",
+          "duration": "50 min",
+          "difficulty": "Avanzado",
+          "objectives": [
+            "Crear y manejar threads",
+            "Evitar race conditions",
+            "Usar locks básicos"
+          ],
+          "topics": [
+            "threading module",
+            "Thread creation",
+            "Race conditions",
+            "Locks y RLocks",
+            "Thread communication",
+            "GIL considerations"
+          ]
+        },
+        {
+          "id": "async-await",
+          "title": "Programación Asíncrona",
+          "description": "async/await y asyncio",
+          "duration": "60 min",
+          "difficulty": "Avanzado",
+          "objectives": [
+            "Escribir código asíncrono",
+            "Usar async/await",
+            "Manejar múltiples tasks"
+          ],
+          "topics": [
+            "asyncio basics",
+            "async/await syntax",
+            "Coroutines",
+            "Tasks",
+            "Event loop",
+            "Async context managers"
+          ]
+        },
+        {
+          "id": "performance",
+          "title": "Optimización de Performance",
+          "description": "Hacer código más eficiente",
+          "duration": "55 min",
+          "difficulty": "Avanzado",
+          "objectives": [
+            "Perfilar código",
+            "Identificar cuellos de botella",
+            "Aplicar optimizaciones"
+          ],
+          "topics": [
+            "Profiling tools",
+            "cProfile",
+            "Memory profiling",
+            "Algorithm optimization",
+            "Data structure choice",
+            "Caching strategies"
+          ]
+        },
+        {
+          "id": "metaclasses",
+          "title": "Metaclases",
+          "description": "Clases que crean clases",
+          "duration": "50 min",
+          "difficulty": "Avanzado",
+          "objectives": [
+            "Entender metaclases",
+            "Crear metaclases simples",
+            "Casos de uso prácticos"
+          ],
+          "topics": [
+            "type() function",
+            "Metaclass concept",
+            "__new__ vs __init__",
+            "Custom metaclasses",
+            "Use cases",
+            "When to avoid"
+          ]
+        }
+      ]
+    },
+    "projects": {
+      "category": "Proyectos Finales",
+      "lessons": [
+        {
+          "id": "project-calculator",
+          "title": "Calculadora Avanzada",
+          "description": "Calculadora con GUI y funciones científicas",
+          "duration": "90 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Integrar conocimientos de GUI",
+            "Implementar funciones matemáticas",
+            "Manejar errores de usuario"
+          ],
+          "topics": [
+            "GUI design",
+            "Event handling",
+            "Mathematical functions",
+            "Error handling",
+            "Code organization",
+            "Testing"
+          ]
+        },
+        {
+          "id": "project-web-scraper",
+          "title": "Web Scraper de Noticias",
+          "description": "Extraer y analizar noticias de múltiples fuentes",
+          "duration": "120 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Scraping de múltiples sitios",
+            "Procesamiento de texto",
+            "Almacenamiento de datos"
+          ],
+          "topics": [
+            "Multi-site scraping",
+            "Data cleaning",
+            "Text processing",
+            "Database storage",
+            "Scheduling",
+            "Error handling"
+          ]
+        },
+        {
+          "id": "project-api-server",
+          "title": "API REST Server",
+          "description": "Servidor API completo con base de datos",
+          "duration": "150 min",
+          "difficulty": "Avanzado",
+          "objectives": [
+            "Crear API REST completa",
+            "Implementar autenticación",
+            "Documentar API"
+          ],
+          "topics": [
+            "Flask/FastAPI",
+            "Database integration",
+            "Authentication",
+            "API documentation",
+            "Testing APIs",
+            "Deployment basics"
+          ]
+        },
+        {
+          "id": "project-data-analysis",
+          "title": "Análisis de Datos Completo",
+          "description": "Proyecto de análisis end-to-end",
+          "duration": "180 min",
+          "difficulty": "Avanzado",
+          "objectives": [
+            "Pipeline completo de datos",
+            "Visualizaciones avanzadas",
+            "Insights y conclusiones"
+          ],
+          "topics": [
+            "Data collection",
+            "Data cleaning",
+            "Exploratory analysis",
+            "Statistical analysis",
+            "Visualizations",
+            "Reporting"
+          ]
+        },
+        {
+          "id": "project-automation-suite",
+          "title": "Suite de Automatización",
+          "description": "Conjunto de herramientas de automatización",
+          "duration": "120 min",
+          "difficulty": "Intermedio",
+          "objectives": [
+            "Múltiples herramientas de automatización",
+            "Interfaz unificada",
+            "Configuración flexible"
+          ],
+          "topics": [
+            "File automation",
+            "Email automation",
+            "Web automation",
+            "Configuration management",
+            "Logging",
+            "Packaging"
+          ]
+        }
+      ]
+    }
+  },
+  "learningPath": [
+    "python-intro",
+    "variables-basic",
+    "data-types-basic",
+    "input-output",
+    "operators-arithmetic",
+    "operators-comparison",
+    "operators-logical",
+    "conditionals-basic",
+    "loops-for",
+    "loops-while",
+    "strings-basic",
+    "strings-methods",
+    "strings-slicing",
+    "strings-formatting",
+    "lists-basic",
+    "lists-methods",
+    "tuples",
+    "sets",
+    "dictionaries-basic",
+    "dictionaries-advanced",
+    "comprehensions",
+    "functions-basic",
+    "functions-parameters",
+    "scope-variables",
+    "lambda-functions",
+    "higher-order-functions",
+    "modules-basic",
+    "packages",
+    "files-basic",
+    "files-advanced",
+    "csv-files",
+    "json-files",
+    "exceptions-basic",
+    "custom-exceptions",
+    "debugging-basic",
+    "classes-basic",
+    "class-attributes",
+    "methods-types",
+    "inheritance",
+    "polymorphism",
+    "encapsulation",
+    "magic-methods",
+    "dataclasses",
+    "decorators-basic",
+    "decorators-advanced",
+    "generators",
+    "standard-library",
+    "pip-virtualenv",
+    "regex-intro",
+    "databases-intro",
+    "unittest-basic",
+    "pytest-intro",
+    "http-requests",
+    "web-scraping",
+    "flask-intro",
+    "numpy-intro",
+    "pandas-intro",
+    "matplotlib-intro",
+    "file-automation",
+    "email-automation",
+    "gui-tkinter",
+    "concurrency-threading",
+    "async-await",
+    "performance",
+    "apis-rest",
+    "metaclasses",
+    "project-calculator",
+    "project-web-scraper",
+    "project-api-server",
+    "project-data-analysis",
+    "project-automation-suite"
+  ],
+  "prerequisites": {
+    "python-intro": [],
+    "variables-basic": ["python-intro"],
+    "data-types-basic": ["variables-basic"],
+    "input-output": ["data-types-basic"],
+    "operators-arithmetic": ["data-types-basic"],
+    "operators-comparison": ["operators-arithmetic"],
+    "operators-logical": ["operators-comparison"],
+    "conditionals-basic": ["operators-logical"],
+    "loops-for": ["conditionals-basic"],
+    "loops-while": ["loops-for"],
+    "strings-basic": ["input-output"],
+    "strings-methods": ["strings-basic"],
+    "strings-slicing": ["strings-methods"],
+    "strings-formatting": ["strings-slicing"],
+    "lists-basic": ["loops-while"],
+    "lists-methods": ["lists-basic"],
+    "tuples": ["lists-methods"],
+    "sets": ["tuples"],
+    "dictionaries-basic": ["sets"],
+    "dictionaries-advanced": ["dictionaries-basic"],
+    "comprehensions": ["dictionaries-advanced"],
+    "functions-basic": ["comprehensions"],
+    "functions-parameters": ["functions-basic"],
+    "scope-variables": ["functions-parameters"],
+    "lambda-functions": ["scope-variables"],
+    "higher-order-functions": ["lambda-functions"],
+    "modules-basic": ["higher-order-functions"],
+    "packages": ["modules-basic"],
+    "files-basic": ["packages"],
+    "files-advanced": ["files-basic"],
+    "csv-files": ["files-advanced"],
+    "json-files": ["csv-files"],
+    "exceptions-basic": ["json-files"],
+    "custom-exceptions": ["exceptions-basic"],
+    "debugging-basic": ["custom-exceptions"],
+    "classes-basic": ["debugging-basic"],
+    "class-attributes": ["classes-basic"],
+    "methods-types": ["class-attributes"],
+    "inheritance": ["methods-types"],
+    "polymorphism": ["inheritance"],
+    "encapsulation": ["polymorphism"],
+    "magic-methods": ["encapsulation"],
+    "dataclasses": ["magic-methods"],
+    "decorators-basic": ["dataclasses"],
+    "decorators-advanced": ["decorators-basic"],
+    "generators": ["decorators-advanced"],
+    "standard-library": ["generators"],
+    "pip-virtualenv": ["standard-library"],
+    "regex-intro": ["strings-formatting"],
+    "databases-intro": ["json-files"],
+    "unittest-basic": ["debugging-basic"],
+    "pytest-intro": ["unittest-basic"],
+    "http-requests": ["pip-virtualenv"],
+    "web-scraping": ["http-requests", "regex-intro"],
+    "flask-intro": ["web-scraping"],
+    "numpy-intro": ["pip-virtualenv"],
+    "pandas-intro": ["numpy-intro", "csv-files"],
+    "matplotlib-intro": ["pandas-intro"],
+    "file-automation": ["files-advanced"],
+    "email-automation": ["file-automation"],
+    "gui-tkinter": ["classes-basic"],
+    "concurrency-threading": ["generators"],
+    "async-await": ["concurrency-threading"],
+    "performance": ["async-await"],
+    "apis-rest": ["flask-intro", "unittest-basic"],
+    "metaclasses": ["magic-methods"],
+    "project-calculator": ["gui-tkinter", "exceptions-basic"],
+    "project-web-scraper": ["web-scraping", "databases-intro"],
+    "project-api-server": ["apis-rest", "databases-intro"],
+    "project-data-analysis": ["matplotlib-intro", "pandas-intro"],
+    "project-automation-suite": ["email-automation", "gui-tkinter"]
+  },
+  "skillTracks": {
+    "webDevelopment": {
+      "title": "Desarrollo Web con Python",
+      "description": "Especialízate en crear aplicaciones web",
+      "lessons": [
+        "http-requests",
+        "web-scraping",
+        "flask-intro",
+        "apis-rest",
+        "databases-intro",
+        "project-api-server"
+      ]
+    },
+    "dataScience": {
+      "title": "Data Science y Analytics",
+      "description": "Analiza datos y crea insights",
+      "lessons": [
+        "numpy-intro",
+        "pandas-intro",
+        "matplotlib-intro",
+        "regex-intro",
+        "csv-files",
+        "project-data-analysis"
+      ]
+    },
+    "automation": {
+      "title": "Automatización y Scripts",
+      "description": "Automatiza tareas repetitivas",
+      "lessons": [
+        "file-automation",
+        "email-automation",
+        "gui-tkinter",
+        "databases-intro",
+        "project-automation-suite"
+      ]
+    },
+    "backend": {
+      "title": "Backend Development",
+      "description": "Desarrolla el backend de aplicaciones",
+      "lessons": [
+        "apis-rest",
+        "databases-intro",
+        "async-await",
+        "performance",
+        "unittest-basic",
+        "project-api-server"
+      ]
+    }
+  },
+  "assessments": {
+    "fundamentals": {
+      "title": "Evaluación: Fundamentos de Python",
+      "description": "Demuestra tu dominio de los conceptos básicos",
+      "requiredLessons": [
+        "variables-basic",
+        "data-types-basic",
+        "conditionals-basic",
+        "loops-for",
+        "loops-while"
+      ],
+      "type": "practical",
+      "timeLimit": "60 min"
+    },
+    "dataStructures": {
+      "title": "Evaluación: Estructuras de Datos",
+      "description": "Trabaja con listas, diccionarios y más",
+      "requiredLessons": [
+        "lists-methods",
+        "dictionaries-advanced",
+        "comprehensions"
+      ],
+      "type": "practical",
+      "timeLimit": "45 min"
+    },
+    "oop": {
+      "title": "Evaluación: Programación Orientada a Objetos",
+      "description": "Crea clases y aplica POO",
+      "requiredLessons": [
+        "classes-basic",
+        "inheritance",
+        "polymorphism",
+        "encapsulation"
+      ],
+      "type": "project",
+      "timeLimit": "90 min"
+    },
+    "final": {
+      "title": "Proyecto Final: Aplicación Completa",
+      "description": "Desarrolla una aplicación que integre todos los conceptos",
+      "requiredLessons": [
+        "project-calculator",
+        "project-web-scraper",
+        "project-api-server"
+      ],
+      "type": "capstone",
+      "timeLimit": "240 min"
+    }
+  }
+}
